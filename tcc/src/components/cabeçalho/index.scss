@@ -1,0 +1,46 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+body{
+    font-size: 10px;
+
+    .Cabe{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: fixed;
+        justify-content: space-between;
+        background-color: rgb(243, 242, 245);
+        width: 100%;
+        height: 10em;
+    }
+
+    h1{
+        color: rgba(63, 94, 173, 1);
+        margin-left: 3em;
+        font-size: 3em;
+    }
+
+    .Cbotoes{
+        font-family:  "Cherry Bomb one", sans-serif ;
+        display: flex;
+        gap: 2em;
+        margin-right: 2em;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        color: rgba(1, 149, 255, 1);
+    }
+    
+    .CDoaçao{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        color: white;
+        border: 0.0.30em solid black;
+        border-radius: 9em;
+        padding:0.4em 0.5em ;
+        gap: 100em;
+    }
+}
