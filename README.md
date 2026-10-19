@@ -1,10 +1,11 @@
-🧸 Doe Brinquedos — Compartilhe Alegria
+🧸 Doe Brinquedos 
 
 💜 Sobre o projeto
 
 O Doe Brinquedos é um site desenvolvido para incentivar a doação de brinquedos para crianças em situação de vulnerabilidade social. O objetivo é promover a solidariedade, estimular o reaproveitamento de brinquedos e levar alegria para quem mais precisa.
 
 Acreditamos que um brinquedo pode proporcionar momentos felizes, criar boas lembranças e transformar vidas.
+
 
 🎯 Objetivos
 
@@ -16,6 +17,7 @@ Dar uma nova oportunidade de uso aos brinquedos.
 
 Levar alegria para crianças que precisam.
 
+
 🛠️ Tecnologias utilizadas
 
 HTML5
@@ -23,6 +25,7 @@ HTML5
 CSS3
 
 JavaScript
+
 
 💖 Nossa missão
 
