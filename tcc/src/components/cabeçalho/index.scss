@@ -1,10 +1,9 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
 
-body{
+body {
     font-size: 10px;
 
-    .Cabe{
+    .Cabe {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -13,16 +12,17 @@ body{
         background-color: rgb(243, 242, 245);
         width: 100%;
         height: 10em;
+        z-index: 2;
     }
 
-    h1{
+    h1 {
         color: rgba(63, 94, 173, 1);
         margin-left: 3em;
         font-size: 3em;
     }
 
-    .Cbotoes{
-        font-family:  "Cherry Bomb one", sans-serif ;
+    .Cbotoes {
+        font-family: "Cherry Bomb one", sans-serif;
         display: flex;
         gap: 2em;
         margin-right: 2em;
@@ -31,8 +31,42 @@ body{
         font-size: 2em;
         color: rgba(1, 149, 255, 1);
     }
-    
-    .CDoaçao{
+
+    .inicio {
+        transition: 1s;
+    }
+
+    .inicio:hover {
+        transform: translatey(-20px);
+    }
+
+    .login {
+        transition: 1s;
+    }
+
+    .login:hover{
+        transform: translatey(-20px);
+    }
+
+.cadastro{
+    transition: 1s;
+}
+
+.cadastro:hover{
+    transform: translateY(-20px);
+}
+
+.perfi{transition: 1s;}
+
+.perfi:hover{
+    transform: translateY(-20px);
+}
+
+
+
+
+
+    .CDoaçao {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -43,7 +77,13 @@ body{
         height: 2em;
         width: 8em;
         gap: 0.5em;
-        
+
     }
-   
+
+.CDoaçao:hover{
+transform: matriz(20);
+
+
+}
+
 }
