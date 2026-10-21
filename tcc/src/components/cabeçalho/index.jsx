@@ -9,10 +9,10 @@ export default function Cabecalho(){
       </div>
       
       <div className='Cbotoes'>   
-        <a>Inicio</a>
-        <a>Login</a>
-        <a>Cadastro</a>
-        <a>Perfil</a>
+        <a className='inicio'>Inicio</a>
+        <a className='login'>Login</a>
+        <a className='cadastro'>Cadastro</a>
+        <a className='perfi'>Perfil</a>
         
         <a className='CDoaçao'> 
           <img className='coracao' src='../../../assets/icons/image 61.png' height={19} />  

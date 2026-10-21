@@ -10,14 +10,14 @@ body {
         align-items: center;
         width: 100%;
     }
-    
+
     .test {
         display: flex;
         margin-bottom: 20em;
     }
 
     .imagemco {
-        width: 100%;  
+        width: 100%;
         height: 90em;
         object-fit: cover;
     }
@@ -31,7 +31,7 @@ body {
         left: 5em;
         width: 50em;
         gap: 1.5em;
-        background: rgba(255, 255, 255, 0.2); 
+        background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(0.4em);
         padding: 3em;
         border-radius: 1.5em;
@@ -45,6 +45,11 @@ body {
         margin: 0;
     }
 
+  .co_titulo1:hover{
+    
+  }
+  
+
     .co_titulo2 {
         font-family: "Cherry Bomb One", sans-serif;
         font-size: 5em;
@@ -55,10 +60,11 @@ body {
     .Co_para {
         display: flex;
         font-family: 'Alfa Slab One', sans-serif;
-        font-size: 2.5em;
+        font-size: 2.3em;
         color: rgba(63, 94, 173, 1);
     }
-    .Co_Butão{
+
+    .Co_Butão {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -66,48 +72,43 @@ body {
         color: white;
         border: 0.0.30em solid black;
         border-radius: 9em;
-        padding:0.5em 3em ;
+        padding: 0.5em 3em;
         gap: 0.5em;
         font-size: 2em;
         font-family: "Cherry Bomb One", sans-serif;
-        
+
     }
 
-    .meio{
+    .meio {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .Me_titulo{
+    .meio {
+        width: 100%;
         display: flex;
-        font-family: "Cherry Bomb One", sans-serif;
-        font-size: 5em;
-    }
-    .me_imagem1 {
-        display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-family: "Cherry Bomb One", sans-serif;
-        width: 100%;
-    }
-    
-    .me_tituloimg {
-        font-size: 4em;
-        margin-top: 1.5em !important;  
-        margin-bottom: 0em !important;   
-        color: rgba(58, 134, 255, 1);
-        width: 100%;
+        position: relative;
     }
 
-    .me_imgp {
-        font-family: 'Alfa Slab One', sans-serif;
-        font-size: 1.5em;    
-        margin-top: 0.3em !important;   
-        margin-bottom: 0em !important;   
-        text-align: center;
+
+    .me-titulo {
+        display: flex;
+        font-family: "Cherry Bomb One", sans-serif;
+        justify-content: center;
+        align-items: center;
+        font-size: 4em;
+        color: rgba(63, 94, 173, 1);
+    }
+
+    .co-meio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 
 
