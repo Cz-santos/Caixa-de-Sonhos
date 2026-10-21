@@ -23,7 +23,12 @@ function App() {
       <section className='meio'>
         <div className='Me_Começo'>
           <h1 className='Me_titulo'> Como Funciona</h1>
-
+        <div className='me_imagens'>
+            <div className='me_imagem1'>  
+            <img className='img1' src='../../assets/image/image 62.png ' height={190}></img>
+            <h1 className='me_tituloimg'> Separe os brinquedos  </h1>
+            </div>
+        </div>
 
         </div>
 

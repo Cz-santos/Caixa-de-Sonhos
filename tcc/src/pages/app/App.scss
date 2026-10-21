@@ -29,7 +29,7 @@ body {
         align-items: center;
         position: absolute;
         left: 5em;
-        width: 90em;
+        width: 50em;
         gap: 1.5em;
         background: rgba(255, 255, 255, 0.2); 
         backdrop-filter: blur(0.4em);
@@ -55,7 +55,7 @@ body {
     .Co_para {
         display: flex;
         font-family: 'Alfa Slab One', sans-serif;
-        font-size: 2em;
+        font-size: 2.5em;
         color: rgba(63, 94, 173, 1);
     }
     .Co_Butão{
@@ -84,5 +84,31 @@ body {
         font-family: "Cherry Bomb One", sans-serif;
         font-size: 5em;
     }
+    .me_imagem1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: "Cherry Bomb One", sans-serif;
+        width: 100%;
+    }
     
+    .me_tituloimg {
+        font-size: 4em;
+        margin-top: 1.5em !important;  
+        margin-bottom: 0em !important;   
+        color: rgba(58, 134, 255, 1);
+        width: 100%;
+    }
+
+    .me_imgp {
+        font-family: 'Alfa Slab One', sans-serif;
+        font-size: 1.5em;    
+        margin-top: 0.3em !important;   
+        margin-bottom: 0em !important;   
+        text-align: center;
+    }
+
+
 }
