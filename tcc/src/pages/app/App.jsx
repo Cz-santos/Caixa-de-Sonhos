@@ -19,9 +19,7 @@ function App() {
           </a>
         </div>
       </section>
-
-
-
+      
       <section className='meio'>
         <h1 className='meio-titulo'> Como Funciona</h1>
         <div className='co-meio'>
