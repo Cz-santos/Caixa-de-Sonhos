@@ -45,10 +45,6 @@ body {
         margin: 0;
     }
 
-  .co_titulo1:hover{
-    
-  }
-  
 
     .co_titulo2 {
         font-family: "Cherry Bomb One", sans-serif;
@@ -81,34 +77,110 @@ body {
 
     .meio {
         display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .meio {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
-        position: relative;
-    }
-
-
-    .me-titulo {
-        display: flex;
-        font-family: "Cherry Bomb One", sans-serif;
-        justify-content: center;
         align-items: center;
-        font-size: 4em;
-        color: rgba(63, 94, 173, 1);
+        padding: 5em 2vw;
+        background-color: white;
+        width: 100%;
+        box-sizing: border-box;
     }
+
+    .meio-titulo {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-family: "Cherry Bomb One", sans-serif;
+        font-size: 6em;
+        color: #3b74b3;
+        margin-top: 0;
+        margin-bottom: 1.2em;
+        width: 100%;
+       
+    }
+
 
     .co-meio {
         display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 20em;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        flex-wrap: nowrap;
+        box-sizing: border-box;
+    }
+
+
+    .meio-img1 {
+    flex: 1;
+    width: 33.33%; 
+    max-width: 350px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    }
+
+    .me-img {
+    height: 18em; 
+    width: 100%; 
+    margin-bottom: 2.5em; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .me-img img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    }
+
+    .a {
+        display: flex;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
+        margin-bottom: 1em;
+        width: 100%;
+        min-height: 4.5em;
+    }
+
+    .a h2 {
+        color: #1a365d;
+        font-size: 3em;
+        font-weight: 900;
+        margin: 0;
+        line-height: 1.1;
+        text-align: center;
+        font-family: sans-serif;
+        font-family: "Cherry Bomb One", sans-serif;
+    }
+
+    .desc {
+        color:rgba(63, 94, 173, 1);
+        font-size: 1.6em;
+        font-weight: bold;
+        line-height: 1.4;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        padding-left: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+        font-size: 2em;
+    }
+
+    .céu{
+        display: flex;
+        background-color: rgba(73, 171, 219, 1);
+        width: 100%;
+        height: 40em;
+    
+        
     }
 
 
