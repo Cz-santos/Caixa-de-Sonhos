@@ -1,119 +1,135 @@
 @import url('https://googleapis.com');
 @import url('https://googleapis.com');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    
 body {
     font-size: 10px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
 
-    .começo {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
+.App {
+    width: 100%;
+    background-color: aqua;
+}
 
-    .test {
-        display: flex;
-        margin-bottom: 20em;
-    }
+.começo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative; 
+}
 
-    .imagemco {
-        width: 100%;
-        height: 90em;
-        object-fit: cover;
-    }
+.imagemco {
+    width: 100vw;       
+    height: 90em;
+    object-fit: cover;
+    display: block;     
+}
 
-    .começoblur {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        left: 5em;
-        width: 50em;
-        gap: 1.5em;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(0.4em);
-        padding: 3em;
-        border-radius: 1.5em;
-        border: 0.1em solid rgba(255, 255, 255, 0.3);
-    }
+.começoblur {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 5em;
+    width: 50em;
+    gap: 2em;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(0.4em);
+    padding: 4em 3em;
+    border-radius: 1.5em;
+    border: 0.1em solid rgba(255, 255, 255, 0.3);
+}
 
-    .co_titulo1 {
-        font-family: "Cherry Bomb One", sans-serif;
-        color: red;
-        font-size: 5em;
-        margin: 0;
-    }
+.co_titulo1 {
+    font-family: "Cherry Bomb One", sans-serif;
+    color: red;
+    font-size: 5em;
+    margin: 0;
+    line-height: 1.2;      
+    text-align: center;
+    width: 100%;           
+}
 
+.co_titulo2 {
+    font-family: "Cherry Bomb One", sans-serif;
+    font-size: 5em;
+    margin: 0;
+    color: rgba(58, 134, 255, 1);
+    line-height: 1.2;      
+    text-align: center;
+    width: 100%;           
+}
 
-    .co_titulo2 {
-        font-family: "Cherry Bomb One", sans-serif;
-        font-size: 5em;
-        margin: 0;
-        color: rgba(58, 134, 255, 1);
-    }
+.Co_para {
+    display: flex;
+    font-family: 'Alfa Slab One', sans-serif;
+    font-size: 2.3em;      
+    color: rgba(63, 94, 173, 1);
+    text-align: center;
+}
 
-    .Co_para {
-        display: flex;
-        font-family: 'Alfa Slab One', sans-serif;
-        font-size: 2.3em;
-        color: rgba(63, 94, 173, 1);
-    }
+.Co_Butão {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white; 
+    border-radius: 9em;
+    padding: 0.5em 3em;
+    gap: 0.5em;
+    font-size: 2em;
+    font-family: "Cherry Bomb One", sans-serif;
+    cursor: pointer;
+    text-decoration: none;  
+}
 
-    .Co_Butão {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: red;
-        color: white;
-        border: 0.0.30em solid black;
-        border-radius: 9em;
-        padding: 0.5em 3em;
-        gap: 0.5em;
-        font-size: 2em;
-        font-family: "Cherry Bomb One", sans-serif;
+.meio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5em 2vw;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-    }
+.meio-titulo {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: "Cherry Bomb One", sans-serif;
+    font-size: 6em;
+    color: #3b74b3;
+    margin-top: 0;
+    margin-bottom: 1.2em;
+    width: 100%;
+}
 
-    .meio {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 5em 2vw;
-        background-color: white;
-        width: 100%;
-        box-sizing: border-box;
-    }
+.co-meio {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 20em;
+    max-width: 120em;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+}
 
-    .meio-titulo {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        font-family: "Cherry Bomb One", sans-serif;
-        font-size: 6em;
-        color: #3b74b3;
-        margin-top: 0;
-        margin-bottom: 1.2em;
-        width: 100%;
-       
-    }
-
-
-    .co-meio {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-direction: row;
-        gap: 20em;
-        max-width: 120em;
-        width: 100%;
-        margin: 0 auto;
-        flex-wrap: nowrap;
-        box-sizing: border-box;
-    }
-
-
-    .meio-img1 {
+.meio-img1 {
     flex: 1;
     width: 33.33%; 
     max-width: 35em; 
@@ -121,72 +137,64 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    }
+}
 
-    .me-img {
+.me-img {
     height: 18em; 
     width: 100%; 
     margin-bottom: 2.5em; 
     display: flex;
     align-items: center;
     justify-content: center;
-    }
+}
 
-    .me-img img {
+.me-img img {
     max-height: 100%;
     max-width: 100%;
     width: auto;
     height: auto;
     object-fit: contain;
-    }
+}
 
-    .a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1em;
-        width: 100%;
-        min-height: 4.5em;
-    }
+.a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+    width: 100%;
+    min-height: 4.5em;
+}
 
-    .a h2 {
-        color: #1a365d;
-        font-size: 3em;
-        margin: 0;
-        line-height: 1.1;
-        text-align: center;
-        font-family: sans-serif;
-        font-family: "Cherry Bomb One", sans-serif;
-    }
+.a h2 {
+    color: #1a365d;
+    font-size: 3em;
+    margin: 0;
+    line-height: 1.1;
+    text-align: center;
+    font-family: "Cherry Bomb One", sans-serif;
+}
 
-    .desc {
-        color:rgba(63, 94, 173, 1);
-        font-size: 1.6em;
-        font-weight: bold;
-        line-height: 1.4;
-        margin: 0;
-        text-align: center;
-        width: 100%;
-        padding-left: 0;
-        box-sizing: border-box;
-        font-family: sans-serif;
-        font-size: 2em;
-    }
+.desc {
+    color: rgba(63, 94, 173, 1);
+    font-weight: bold;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    padding-left: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 2em;
+}
 
-    .céu{
-        display: flex;
-        background-color: rgba(73, 171, 219, 1);
-        width: 100%;
-        height: 40em;
-           
-    }
-    .meiocéu{
-        width: 100vw;
-        background-color: #3b74b3;
-    }
-    .App{
-        width: 100%;
-        background-color: aqua;
-    }
+.céu {
+    display: flex;
+    background-color: rgba(73, 171, 219, 1);
+    width: 100%;
+    height: 40em;
+}
 
+.meiocéu {
+    width: 100%;
+    background-color: #3b74b3;
 }
