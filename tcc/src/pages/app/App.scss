@@ -15,10 +15,7 @@ body {
     overflow-x: hidden;
 }
 
-.App {
-    width: 100%;
-    background-color: aqua;
-}
+
 
 .começo {
     display: flex;
@@ -45,7 +42,7 @@ body {
     width: 50em;
     gap: 2em;
     background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(0.4em);
+    backdrop-filter: blur(1em);
     padding: 4em 3em;
     border-radius: 1.5em;
     border: 0.1em solid rgba(255, 255, 255, 0.3);
@@ -106,10 +103,9 @@ body {
 
 .meio-titulo {
     display: flex;
-    justify-content: center;
     text-align: center;
     font-family: "Cherry Bomb One", sans-serif;
-    font-size: 6em;
+    font-size: 4em;
     color: #3b74b3;
     margin-top: 0;
     margin-bottom: 1.2em;
@@ -144,7 +140,7 @@ body {
     width: 100%; 
     margin-bottom: 2.5em; 
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 }
 
@@ -190,11 +186,36 @@ body {
 .céu {
     display: flex;
     background-color: rgba(73, 171, 219, 1);
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
-    height: 40em;
+    height: 50em;
 }
 
 .meiocéu {
     width: 100%;
     background-color: #3b74b3;
+}
+.cor1{
+    color:rgb(141, 219, 22);
+}
+.cor2{
+    color: red;
+}
+.cor3{
+    color: blue;
+}
+.final{
+    display: flex;
+    margin-top: 10em;
+}
+.fi-titulo{
+    display: flex;
+    text-align: center;
+    font-family: "Cherry Bomb One", sans-serif;
+    font-size: 4em;
+    color: #3b74b3;
+    margin-top: 0;
+    margin-bottom: 1.2em;
+    width: 100%;
 }
