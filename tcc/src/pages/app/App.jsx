@@ -1,5 +1,6 @@
 import Cabe from '../../components/cabeçalho/index.jsx'
 import Rodapé from '../../components/rodapé/index.jsx'
+import {Link} from "react-router-dom"
 import './App.scss';
 
 function App() {

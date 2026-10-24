@@ -1,21 +1,22 @@
-import './index.scss'
 
-export default function Cabecalho(){
+import './index.scss'
+import { Link } from 'react-router-dom'
+
+export default function Cabecalho() {
   return (
     <div className='Cabe'>
       <div className='Ctitulo'>
         {/* A logo do site */}
-        <h1>Nome do Site</h1>
+        <h1>Caixa de Sonhos</h1>
       </div>
-      
-      <div className='Cbotoes'>   
+      <div className='Cbotoes'>
         <a className='inicio'>Inicio</a>
-        <a className='login'>Login</a>
+        <Link to="/lo" className="login">Login</Link>
         <a className='cadastro'>Cadastro</a>
         <a className='perfi'>Perfil</a>
-        
-        <a className='CDoaçao'> 
-          <img className='coracao' src='../../../assets/icons/image 61.png' height={19} />  
+
+        <a className='CDoaçao'>
+          <img className='coracao' src='../../../assets/icons/image 61.png' height={19} />
           Doe agora
         </a>
       </div>

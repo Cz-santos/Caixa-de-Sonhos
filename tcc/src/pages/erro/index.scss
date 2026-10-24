@@ -1,0 +1,64 @@
+@import url('https://googleapis.com');
+.body {
+    font-size: 10px;
+
+}
+
+.Erro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    background-color: #faf7ef;
+}
+
+.ops {
+    font-size: 5em;
+    color: red;
+}
+
+.img404 {
+    max-width: 100%;
+    height: auto;
+    margin-left: 14.2em;
+}
+
+.Pgn_n {
+    font-size: 5em;
+}
+
+
+.para-erro {  
+    margin-top: 2em;
+    margin-left: 9em;
+    margin-bottom: 2em; 
+    font-size: 2em;
+    color: rgba(63, 94, 173, 1);
+    text-align: center; 
+    font-family: 'Alfa Slab One', sans-serif;
+
+}
+
+.volta-erro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    padding: 0.5em 2em;
+    color: white;
+    border-radius: 2em;
+    margin-left: 15em;
+
+
+}
+
+.voltar-erro-bot{
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    align-self: center;
+    gap: 2em;
+    font-family: 'Alfa Slab One', sans-serif;
+}

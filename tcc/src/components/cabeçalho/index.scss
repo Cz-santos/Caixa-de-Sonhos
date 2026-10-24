@@ -19,6 +19,7 @@ body {
         color: rgba(63, 94, 173, 1);
         margin-left: 3em;
         font-size: 3em;
+        font-family: "Cherry Bomb one", sans-serif;
     }
 
     .Cbotoes {
@@ -32,35 +33,50 @@ body {
         color: rgba(1, 149, 255, 1);
     }
 
+    .login,
+    .inicio,
+    .cadastro,
+    .perfi {
+        color: rgba(1, 149, 255, 1);
+        text-decoration: none;
+    }
+
     .inicio {
         transition: 1s;
+
     }
 
     .inicio:hover {
         transform: translatey(-20px);
+        color: red;
     }
 
     .login {
         transition: 1s;
     }
 
-    .login:hover{
+    .login:hover {
         transform: translatey(-20px);
+        color: red;
     }
 
-.cadastro{
-    transition: 1s;
-}
+    .cadastro {
+        transition: 1s;
+    }
 
-.cadastro:hover{
-    transform: translateY(-20px);
-}
+    .cadastro:hover {
+        transform: translateY(-20px);
+        color: red;
+    }
 
-.perfi{transition: 1s;}
+    .perfi {
+        transition: 1s;
+    }
 
-.perfi:hover{
-    transform: translateY(-20px);
-}
+    .perfi:hover {
+        transform: translateY(-20px);
+        color: red;
+    }
 
 
     .CDoaçao {
@@ -77,10 +93,10 @@ body {
 
     }
 
-.CDoaçao:hover{
-transform: matriz(20);
-
-
-}
+    .CDoaçao:hover {
+        color: rgb(248, 0, 0); 
+        background-color:rgb(191, 208, 228);
+        transform: transition(2em);
+    }
 
 }
