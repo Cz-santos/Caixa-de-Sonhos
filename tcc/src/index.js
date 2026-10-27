@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 import App from './pages/app/App';
-import Login from "../src/pages/login/index.jsx"
+import Login from "./pages/login/index.jsx"
 import Erro  from './pages/erro/index.jsx';
 
 
@@ -13,7 +13,7 @@ root.render(
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<App/>}></Route>
-      <Route path='/lo' element={<Login/>}></Route>
+      <Route path='/login' element={<Login/>}></Route>
       <Route path='*' element={<Erro/>}></Route>
     </Routes>
     </BrowserRouter>
