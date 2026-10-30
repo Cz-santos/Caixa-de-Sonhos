@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+@import url('https://googleapis.com');
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Poppins', sans-serif;
+   width: 100%;
+  height: 100%;
+}
+
+.login-começo {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFbf4;
+  overflow: hidden;
+}
+
+.lado-esquerdo-login {
+  flex: 1;
+  padding: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.texto-login {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.texto-login h2 {
+  color: #1A4480;
+  font-size: 2.8em;
+  margin-bottom: 0.8em;
+  font-weight: 700;
+  font-family: "Cherry Bomb one", sans-serif;
+}
+
+.texto-login p {
+  color: #4a709c;
+  font-size: 1.2em;
+  font-weight: 500;
+  font-family: 'Alfa Slab One', sans-serif;
+}
+
+.input-email, 
+.input-senha {
+  position: relative;
+  width: 100%;
+  max-width: 35em;
+  margin-bottom: 1.5em;
+}
+
+.input-email img, 
+.input-senha img {
+  position: absolute;
+  left: 1.8em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.8em;
+  height: auto;
+}
+
+.in-email, 
+.in-senha {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.4em 1.4em 1.4em 5em;
+  border: none;
+  background-color: #E0E0E0;
+  border-radius: 25px;
+  font-size: 1.4em;
+  outline: none;
+}
+
+.in-email::placeholder, 
+.in-senha::placeholder {
+  color: #757575;
+  font-weight: 500;
+}
+
+.but-login {
+  background-color:  rgb(248, 0, 0); ;
+  color: white;
+  padding: 1em 6em;
+  border-radius: 25px;
+  font-size: 1.3em;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 1em;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.but-login:hover {
+  background-color: #5A1E1E;
+}
+
+.texto-cadastro {
+  font-size: 1.1em;
+  color: #666;
+  margin-top: 1.5em;
+}
+
+.texto-cadastro a {
+  color: #1A4480;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.texto-cadastro a:hover {
+  text-decoration: underline;
+}
+
+.lado-direito-login {
+  flex: 1;
+  background-color: #0056C6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100em;
+  object-fit: cover;
+}
+

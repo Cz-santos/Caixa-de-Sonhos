@@ -11,7 +11,7 @@ export default function Cabecalho() {
       </div>
       <div className='Cbotoes'>
         <a className='inicio'>Inicio</a>
-        <Link to="/lo" className="login">Login</Link>
+        <Link to="/login" className="login">Login</Link>
         <a className='cadastro'>Cadastro</a>
         <a className='perfi'>Perfil</a>
 
