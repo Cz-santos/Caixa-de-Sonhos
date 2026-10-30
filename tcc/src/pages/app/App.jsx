@@ -48,7 +48,7 @@ function App() {
               <img src='../../assets/image/image 64.png  ' alt='Criança feliz' height={200}/>
             </div>
             <div className='a'>
-              <h2> <span className='cor3'> 3 </span> Crinaças Felizes </h2>
+              <h2> <span className='cor3'> 3 </span> Crianças Felizes </h2>
             </div>
             <p className='desc'> Seu gesto chega até <br/> quem precisa </p>
           </div>

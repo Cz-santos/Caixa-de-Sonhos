@@ -25,7 +25,7 @@ export default function Login(){
             </div>
 
             <div className="lado-direito-login">
-                <img src="../../assets/image/image 98.png" height={1000}/>
+                <img src="../../assets/image/image 98.png" height={950}/>
             </div>
 
         </section>

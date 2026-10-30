@@ -1,137 +1,222 @@
-@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
 @import url('https://googleapis.com');
-body {
+
+
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --primary: #1e3a8a;    
+  --primary-light: #3b82f6; 
+  --accent: #ef4444;        
+  --accent-hover: #dc2626;  
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --input-bg: #f1f5f9;
+  --input-focus: #e2e8f0;
+  --border-radius: 16px;    
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
   font-size: 10px;
-  background-color: #f4f4f4;
+  background-color: var(--bg-main);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
   font-family: 'Poppins', sans-serif;
-   width: 100%;
-  height: 100%;
+  color: var(--text-main);
+  overflow: hidden;
 }
+
 
 .login-começo {
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: #FFFbf4;
-  overflow: hidden;
+  background-color: var(--bg-card);
 }
+
 
 .lado-esquerdo-login {
   flex: 1;
-  padding: 5em;
+  padding: 4em 6em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  max-width: 600px; 
+  margin: 0 auto;
 }
 
 .texto-login {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
+  width: 100%;
 }
 
 .texto-login h2 {
-  color: #1A4480;
-  font-size: 2.8em;
-  margin-bottom: 0.8em;
+  color: var(--primary);
+  font-size: 3.2em;
+  margin-bottom: 0.4em;
   font-weight: 700;
-  font-family: "Cherry Bomb one", sans-serif;
+  font-family: 'Cherry Bomb One', sans-serif;
+  letter-spacing: -0.5px;
 }
 
 .texto-login p {
-  color: #4a709c;
-  font-size: 1.2em;
-  font-weight: 500;
-  font-family: 'Alfa Slab One', sans-serif;
+  color: var(--text-muted);
+  font-size: 1.3em;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif; 
 }
 
-.input-email, 
-.input-senha {
+
+.input-email, .input-senha {
   position: relative;
   width: 100%;
-  max-width: 35em;
-  margin-bottom: 1.5em;
+  max-width: 38em;
+  margin-bottom: 1.8em;
 }
 
-.input-email img, 
-.input-senha img {
+.input-email img, .input-senha img {
   position: absolute;
   left: 1.8em;
   top: 50%;
   transform: translateY(-50%);
   width: 1.8em;
   height: auto;
+  opacity: 0.5; 
+  transition: var(--transition);
 }
 
-.in-email, 
-.in-senha {
+.in-email, .in-senha {
   width: 100%;
-  box-sizing: border-box;
-  padding: 1.4em 1.4em 1.4em 5em;
-  border: none;
-  background-color: #E0E0E0;
-  border-radius: 25px;
+  padding: 1.4em 1.4em 1.4em 4.8em;
+  border: 2px solid transparent; 
+  background-color: var(--input-bg);
+  border-radius: var(--border-radius);
   font-size: 1.4em;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-main);
   outline: none;
+  transition: var(--transition);
 }
 
-.in-email::placeholder, 
-.in-senha::placeholder {
-  color: #757575;
-  font-weight: 500;
+
+.in-email:focus, .in-senha:focus {
+  background-color: var(--bg-card);
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
 }
+
+
+.input-email:focus-within img, .input-senha:focus-within img {
+  opacity: 1;
+  filter: drop-shadow(0px 0px 2px rgba(59, 130, 246, 0.5));
+}
+
+.in-email::placeholder, .in-senha::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
 
 .but-login {
-  background-color:  rgb(248, 0, 0); ;
+  background-color: var(--accent);
   color: white;
-  padding: 1em 6em;
-  border-radius: 25px;
-  font-size: 1.3em;
+  width: 100%;
+  max-width: 41em;
+  padding: 1.1em;
+  border-radius: var(--border-radius);
+  font-size: 1.4em;
   font-weight: 600;
   text-decoration: none;
   margin-top: 1em;
   text-align: center;
-  transition: background-color 0.2s ease;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25); 
+  cursor: pointer;
 }
 
 .but-login:hover {
-  background-color: #5A1E1E;
+  background-color: var(--accent-hover);
+  transform: translateY(-2px); 
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
 }
 
+.but-login:active {
+  transform: translateY(0);
+}
+
+
 .texto-cadastro {
-  font-size: 1.1em;
-  color: #666;
-  margin-top: 1.5em;
+  font-size: 1.3em;
+  color: var(--text-muted);
+  margin-top: 2.5em;
 }
 
 .texto-cadastro a {
-  color: #1A4480;
+  color: var(--primary-light);
   text-decoration: none;
   font-weight: 600;
+  transition: var(--transition);
 }
 
 .texto-cadastro a:hover {
+  color: var(--primary);
   text-decoration: underline;
 }
 
+
 .lado-direito-login {
-  flex: 1;
-  background-color: #0056C6;
+  flex: 1.2; 
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); 
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  width: 100vw;
-  height: 100em;
-  object-fit: cover;
 }
 
+
+.lado-direito-login::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  top: -20%;
+  left: -20%;
+}
+
+.lado-direito-login img {
+  max-width: 75%;
+  height: auto;
+  right: 15em;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25)); 
+  z-index: 1;
+  animation: float 6s ease-in-out infinite; 
+}
+
+
+
+
+
+@media (max-width: 900px) {
+  .lado-direito-login {
+    display: none; 
+  }
+  .lado-esquerdo-login {
+    max-width: 100%;
+    padding: 2em;
+  }
+}
