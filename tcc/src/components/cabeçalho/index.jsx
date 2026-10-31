@@ -1,14 +1,12 @@
 
 import './index.scss'
 import { Link } from 'react-router-dom'
+import Logo from "../logo/index.jsx"
 
 export default function Cabecalho() {
   return (
     <div className='Cabe'>
-      <div className='Ctitulo'>
-        {/* A logo do site */}
-        <h1>Caixa de Sonhos</h1>
-      </div>
+    <Logo className="test" />
       <div className='Cbotoes'>
         <a className='inicio'>Inicio</a>
         <Link to="/login" className="login">Login</Link>

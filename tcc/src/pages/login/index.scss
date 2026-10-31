@@ -1,21 +1,4 @@
-
 @import url('https://googleapis.com');
-
-
-:root {
-  --bg-main: #f8fafc;
-  --bg-card: #ffffff;
-  --primary: #1e3a8a;    
-  --primary-light: #3b82f6; 
-  --accent: #ef4444;        
-  --accent-hover: #dc2626;  
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --input-bg: #f1f5f9;
-  --input-focus: #e2e8f0;
-  --border-radius: 16px;    
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
 * {
   box-sizing: border-box;
@@ -25,198 +8,190 @@
 
 body {
   font-size: 10px;
-  background-color: var(--bg-main);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
+  background-color: #f8fafc;
   font-family: 'Poppins', sans-serif;
-  color: var(--text-main);
-  overflow: hidden;
+  color: #1e293b;
+  min-height: 100vh;
 }
-
 
 .login-começo {
   display: flex;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-card);
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #ffffff;
 }
-
 
 .lado-esquerdo-login {
   flex: 1;
-  padding: 4em 6em;
+  padding: 6em 4em; 
   display: flex;
   flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  max-width: 50em; 
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  max-width: 600px; 
-  margin: 0 auto;
+  margin-bottom: 2.5em;
+}
+
+.titulo-inicial {
+  color: #3f5ead;
+  font-size: 3.2em;
+  font-family: "Cherry Bomb One", sans-serif;
+  letter-spacing: 0.03em;
 }
 
 .texto-login {
   text-align: center;
-  margin-bottom: 3em;
+  margin-bottom: 4em;
   width: 100%;
 }
 
 .texto-login h2 {
-  color: var(--primary);
-  font-size: 3.2em;
+  color: #3f5ead;
+  font-size: 4em;
   margin-bottom: 0.4em;
   font-weight: 700;
   font-family: 'Cherry Bomb One', sans-serif;
-  letter-spacing: -0.5px;
+  letter-spacing: 0.02em;
 }
 
 .texto-login p {
-  color: var(--text-muted);
-  font-size: 1.3em;
-  font-weight: 400;
-  font-family: 'Poppins', sans-serif; 
+  color: #64748b;
+  font-size: 1.4em;
+  font-weight: 500;
 }
 
-
-.input-email, .input-senha {
+.input-email, 
+.input-senha {
   position: relative;
   width: 100%;
   max-width: 38em;
-  margin-bottom: 1.8em;
+  margin-bottom: 2em;
 }
 
-.input-email img, .input-senha img {
+.input-email img, 
+.input-senha img {
   position: absolute;
-  left: 1.8em;
+  left: 2em;
   top: 50%;
   transform: translateY(-50%);
   width: 1.8em;
   height: auto;
-  opacity: 0.5; 
-  transition: var(--transition);
+  opacity: 0.4; 
+  transition: all 0.25s ease;
 }
 
-.in-email, .in-senha {
+.in-email, 
+.in-senha {
   width: 100%;
-  padding: 1.4em 1.4em 1.4em 4.8em;
+  padding: 1.6em 1.6em 1.6em 5.5em; 
   border: 2px solid transparent; 
-  background-color: var(--input-bg);
-  border-radius: var(--border-radius);
+  background-color: #f1f5f9;
+  border-radius: 30px;
   font-size: 1.4em;
   font-family: 'Poppins', sans-serif;
-  color: var(--text-main);
+  color: #1e293b;
   outline: none;
-  transition: var(--transition);
+  transition: all 0.25s ease;
 }
 
-
-.in-email:focus, .in-senha:focus {
-  background-color: var(--bg-card);
-  border-color: var(--primary-light);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+.in-email:focus, 
+.in-senha:focus {
+  background-color: #ffffff;
+  border-color: #3f5ead;
+  box-shadow: 0 4px 12px rgba(63, 94, 173, 0.08);
 }
 
-
-.input-email:focus-within img, .input-senha:focus-within img {
-  opacity: 1;
-  filter: drop-shadow(0px 0px 2px rgba(59, 130, 246, 0.5));
+.input-email:focus-within img, 
+.input-senha:focus-within img {
+  opacity: 0.85;
 }
 
-.in-email::placeholder, .in-senha::placeholder {
-  color: var(--text-muted);
-  font-weight: 400;
+.in-email::placeholder, 
+.in-senha::placeholder {
+  color: #64748b;
+  opacity: 0.7;
 }
-
 
 .but-login {
-  background-color: var(--accent);
-  color: white;
+  background-color: #ef4444;
+  color: #ffffff;
   width: 100%;
-  max-width: 41em;
-  padding: 1.1em;
-  border-radius: var(--border-radius);
-  font-size: 1.4em;
+  max-width: 38em;
+  padding: 1.4em; 
+  border: none;
+  border-radius: 30px;
+  font-size: 1.5em;
   font-weight: 600;
-  text-decoration: none;
-  margin-top: 1em;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 1.5em;
   text-align: center;
-  transition: var(--transition);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25); 
   cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2); 
 }
 
 .but-login:hover {
-  background-color: var(--accent-hover);
+  background-color: #dc2626;
   transform: translateY(-2px); 
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
 }
 
 .but-login:active {
   transform: translateY(0);
 }
 
-
 .texto-cadastro {
   font-size: 1.3em;
-  color: var(--text-muted);
-  margin-top: 2.5em;
+  color: #64748b;
+  margin-top: 4em;
+  font-weight: 500;
 }
 
 .texto-cadastro a {
-  color: var(--primary-light);
+  color: #3f5ead;
   text-decoration: none;
-  font-weight: 600;
-  transition: var(--transition);
+  font-weight: 700;
+  transition: all 0.25s ease;
 }
 
 .texto-cadastro a:hover {
-  color: var(--primary);
+  color: #3b82f6;
   text-decoration: underline;
 }
 
-
 .lado-direito-login {
-  flex: 1.2; 
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); 
+  flex: 1.3; 
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); 
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-}
-
-
-.lado-direito-login::before {
-  content: '';
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-  top: -20%;
-  left: -20%;
+  padding: 2em; 
 }
 
 .lado-direito-login img {
-  max-width: 75%;
-  height: auto;
-  right: 15em;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25)); 
+  max-width: 90%;
+  max-height: 90vh; 
+  object-fit: contain; 
+  border-radius: 20px;
   z-index: 1;
-  animation: float 6s ease-in-out infinite; 
 }
 
-
-
-
-
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .lado-direito-login {
     display: none; 
   }
   .lado-esquerdo-login {
     max-width: 100%;
-    padding: 2em;
+    padding: 4em 2.5em;
   }
 }

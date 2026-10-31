@@ -6,7 +6,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-    
+
 body {
     font-size: 10px;
     margin: 0;
@@ -22,14 +22,14 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    position: relative; 
+    position: relative;
 }
 
 .imagemco {
-    width: 100vw;       
+    width: 100vw;
     height: 90em;
     object-fit: cover;
-    display: block;     
+    display: block;
 }
 
 .começoblur {
@@ -53,9 +53,9 @@ body {
     color: red;
     font-size: 5em;
     margin: 0;
-    line-height: 1.2;      
+    line-height: 1.2;
     text-align: center;
-    width: 100%;           
+    width: 100%;
 }
 
 .co_titulo2 {
@@ -63,15 +63,15 @@ body {
     font-size: 5em;
     margin: 0;
     color: rgba(58, 134, 255, 1);
-    line-height: 1.2;      
+    line-height: 1.2;
     text-align: center;
-    width: 100%;           
+    width: 100%;
 }
 
 .Co_para {
     display: flex;
     font-family: 'Alfa Slab One', sans-serif;
-    font-size: 2.3em;      
+    font-size: 2.3em;
     color: rgba(63, 94, 173, 1);
     text-align: center;
 }
@@ -81,14 +81,20 @@ body {
     justify-content: center;
     align-items: center;
     background-color: red;
-    color: white; 
+    color: white;
     border-radius: 9em;
     padding: 0.5em 3em;
     gap: 0.5em;
     font-size: 2em;
     font-family: "Cherry Bomb One", sans-serif;
     cursor: pointer;
-    text-decoration: none;  
+    text-decoration: none;
+}
+
+.Co_Butão:hover {
+    background-color: #dc2626;
+    transform: translateY(-0.15em);
+    box-shadow: 0 0.2em 0.1em rgba(239, 68, 68, 0.35);
 }
 
 .meio {
@@ -127,8 +133,8 @@ body {
 
 .meio-img1 {
     flex: 1;
-    width: 33.33%; 
-    max-width: 35em; 
+    width: 33.33%;
+    max-width: 35em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -136,9 +142,9 @@ body {
 }
 
 .me-img {
-    height: 18em; 
-    width: 100%; 
-    margin-bottom: 2.5em; 
+    height: 18em;
+    width: 100%;
+    margin-bottom: 2.5em;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -196,20 +202,25 @@ body {
     width: 100%;
     background-color: #3b74b3;
 }
-.cor1{
-    color:rgb(141, 219, 22);
+
+.cor1 {
+    color: rgb(141, 219, 22);
 }
-.cor2{
+
+.cor2 {
     color: red;
 }
-.cor3{
+
+.cor3 {
     color: blue;
 }
-.final{
+
+.final {
     display: flex;
     margin-top: 10em;
 }
-.fi-titulo{
+
+.fi-titulo {
     display: flex;
     text-align: center;
     font-family: "Cherry Bomb One", sans-serif;
