@@ -12,6 +12,7 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #1e293b;
   min-height: 100vh;
+
 }
 
 .login-começo {
@@ -19,6 +20,8 @@ body {
   width: 100vw;
   min-height: 100vh;
   background-color: #ffffff;
+  position: relative;
+  
 }
 
 .lado-esquerdo-login {
@@ -28,8 +31,9 @@ body {
   flex-direction: column;
   justify-content: center; 
   align-items: center;
-  max-width: 50em; 
+  max-width: 150em; 
   margin: 0 auto;
+
 }
 
 .logo {
@@ -132,6 +136,7 @@ body {
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
   margin-top: 1.5em;
+  font-style: none;
   text-align: center;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -174,17 +179,24 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: visible ;
   overflow: hidden;
   padding: 2em; 
+  width: 10vw;
+  
+
 }
 
 .lado-direito-login img {
-  max-width: 90%;
-  max-height: 90vh; 
-  object-fit: contain; 
-  border-radius: 20px;
-  z-index: 1;
+  width: 50vw;
+  max-height: none;
+  object-fit: contain;
+  z-index: 2;
+  position: absolute;
+  top: 10em;
+
 }
+
 
 @media (max-width: 950px) {
   .lado-direito-login {

@@ -9,8 +9,8 @@ export default function Cabecalho() {
     <Logo className="test" />
       <div className='Cbotoes'>
         <a className='inicio'>Inicio</a>
-        <Link to="/login" className="login">Login</Link>
-        <a className='cadastro'>Cadastro</a>
+        <Link to="/" className="login">Login</Link>
+        <Link to="/cadastro" className='cadastro'>Cadastro</Link>
         <a className='perfi'>Perfil</a>
 
         <a className='CDoaçao'>

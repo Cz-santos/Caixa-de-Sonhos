@@ -10,7 +10,7 @@ export default function Erro(){
             <h2 className='para-erro'>Parece que não encontramos essa pagina</h2>
             <div className='volta-erro'>
                 <img src='../../assets/icons/home.png' height={50}/>
-            <Link to="/" className='voltar-erro-bot'> Voltar ao inivio</Link>
+            <Link to="/home" className='voltar-erro-bot'> Voltar ao inivio</Link>
             </div>
         </section>
 
