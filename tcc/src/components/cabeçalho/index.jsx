@@ -11,7 +11,7 @@ export default function Cabecalho() {
         <a className='inicio'>Inicio</a>
         <Link to="/" className="login">Login</Link>
         <Link to="/cadastro" className='cadastro'>Cadastro</Link>
-        <a className='perfi'>Perfil</a>
+        < Link to="/Usuario" className='perfi'>Perfil</Link>
 
         <a className='CDoaçao'>
           <img className='coracao' src='../../../assets/icons/image 61.png' height={19} />
