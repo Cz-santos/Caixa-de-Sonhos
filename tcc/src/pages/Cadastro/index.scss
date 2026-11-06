@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    .container-cadastro {
+        width: 50em;
+        height: 60em;
+        background-color: #FFF4E6;
+        display: flex;
+        gap: 10em;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 2em;
+    }
+
+    .container-cadastro h1 {
+        color: #8B5E3C;
+    }
+
+    .container-input {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 3em;
+        width: 100%;
+        box-sizing: border-box;
+
+    }
+
+.container-txt{
+   width: 100%;
+    text-align: center;
+    color: #E9A15B;
+}
+
+    .container-input h2 {
+        color: #8B5E3C;
+    }
+
+    .container-input input {
+        width: 25em;
+        height: 2.5em;
+        border-radius: 0.5em;
+        border: none;
+        transition: 0.5s;
+        padding-left: 2em;
+    }
+
+    .container-cadastro input:focus {
+        box-shadow: 0 0 20px 2px rgba($color: #E9A15B, $alpha: 1.0);
+        border: none;
+        outline: none;
+    }
+
+    button {
+        border-radius: 5em;
+        background-color: #E9A15B;
+        border: none;
+        width: 10em;
+        height: 2em;
+        transition: 0.5s;
+        color: white;
+    }
+
+    button:hover {
+        background-color: red;
+    }
+
+
+}
