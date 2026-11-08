@@ -1,13 +1,23 @@
 
 import * as service from "../services/brinquedoService.js";
-
 export async function cadastrar(req, res) {
     try {
-        const brinquedo = req.body;
+        const brinquedo = {
+            ...req.body,
+            foto_url: req.file ? `/uploads/${req.file.filename}` : null
+        };
+
+        console.log("DADOS DO BRINQUEDO:", brinquedo);
+
         const id = await service.cadastrarBrinquedo(brinquedo);
 
+        console.log("BRINQUEDO CADASTRADO:", id);
+
         res.status(201).send({ id });
+
     } catch (err) {
+        console.log("ERRO AO CADASTRAR BRINQUEDO:", err);
+
         res.status(500).send({ erro: err.message });
     }
 }

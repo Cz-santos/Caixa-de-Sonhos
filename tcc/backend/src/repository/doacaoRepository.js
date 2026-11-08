@@ -1,4 +1,3 @@
-
 import { con } from "../utils/connection.js";
 
 export async function saveDoacao(doacao) {
@@ -41,7 +40,7 @@ export async function listDoacoes() {
             d.id_brinquedo,
             d.data_retirada,
             b.nome AS nome_brinquedo,
-            u.nome_completo AS nome_doador
+            u.nome AS nome_doador
         FROM doacao d
         INNER JOIN brinquedo b ON d.id_brinquedo = b.id
         INNER JOIN usuario u ON d.id_doador = u.id

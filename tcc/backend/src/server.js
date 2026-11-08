@@ -1,3 +1,4 @@
+
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
@@ -9,6 +10,8 @@ import favoritoRoutes from "./routes/favoritoRoutes.js";
 
 const app = express();
 
+console.log("Aplicação Express criada");
+
 app.use(cors());
 app.use(express.json());
 
@@ -16,12 +19,15 @@ app.use("/uploads", express.static("uploads"));
 
 app.use(usuarioRoutes);
 app.use(brinquedoRoutes);
-app.use(doacaoRoutes);
-app.use(favoritoRoutes);
+// app.use(doacaoRoutes);
+// app.use(favoritoRoutes);
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5002;
 
-app.listen(PORT, () => {
-    // teste do git
-    console.log(`Servidor rodando na porta ${PORT}`);
+console.log("Endereço:", `http://127.0.0.1:${PORT}`);
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log("Servidor iniciado!");
+    console.log("Porta:", PORT);
 });
+

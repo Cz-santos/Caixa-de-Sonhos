@@ -7,6 +7,7 @@ import Login from './pages/login/index.jsx';
 import Erro  from './pages/erro/index.jsx';
 import Cadastro from './pages/Cadastro/index.jsx';
 import Perfil from './pages/Perfil/index.jsx';
+import Segurança from './protege.js'
 
 
 
@@ -16,10 +17,12 @@ root.render(
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Login/>}></Route>
+      <Route element={<Segurança/>}>
       <Route path='/home' element={<App/>}></Route>
       <Route path='*' element={<Erro/>}></Route>
       <Route path='/cadastro' element={<Cadastro/>}></Route>
       <Route path='/Usuario' element={<Perfil/>}></Route>
+      </Route>
     </Routes>
     </BrowserRouter>
 

@@ -1,19 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+@import url('https://googleapis.com');
+
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-size: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
 
     .container-cadastro {
-        width: 50em;
-        height: 60em;
-        background-color: #FFF4E6;
         display: flex;
-        gap: 10em;
+        flex-direction: row;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .lado_esquerdo {
+        width: 100vw;
+        background-color: #FFFfff;
+        display: flex;
+        gap:2em;
         align-items: center;
         justify-content: center;
         flex-direction: column;
@@ -21,7 +26,9 @@ body {
     }
 
     .container-cadastro h1 {
-        color: #8B5E3C;
+        color: rgba(58, 134, 255, 1);
+        font-family: "Cherry Bomb one", sans-serif;
+        font-size:4em;
     }
 
     .container-input {
@@ -35,44 +42,95 @@ body {
 
     }
 
-.container-txt{
-   width: 100%;
-    text-align: center;
-    color: #E9A15B;
-}
-
-    .container-input h2 {
-        color: #8B5E3C;
+    .container-txt {
+        width: 100%;
+        text-align: center;
+        color: #E9A15B;
+        font-family: 'Alfa Slab One', sans-serif;
     }
 
-    .container-input input {
-        width: 25em;
-        height: 2.5em;
-        border-radius: 0.5em;
-        border: none;
-        transition: 0.5s;
-        padding-left: 2em;
+    .container-input h2 {
+    color: rgb(163, 197, 252);
+         
+    }
+
+    .input-nome-cadastro,
+    .input-email-cadastro,
+    .input-senha-cadastro {
+        position: relative;
+        width: 100%;
+        max-width: 38em;
+        margin-bottom: 2em;
+    }
+
+    .in-nome-cadastro,
+    .in-email-cadastro,
+    .in-senha-cadastro {
+        width: 100%;
+        padding: 1.6em 1.6em 1.6em 5.5em;
+        border: 2px solid transparent;
+        background-color: #f1f5f9;
+        border-radius: 30px;
+        font-size: 1.4em;
+        font-family: 'Poppins', sans-serif;
+        color: #1e293b;
+        outline: none;
+        transition: all 0.25s ease;
+    }
+
+    .input-email-cadastro img,
+    .input-senha-cadastro img,
+    .input-nome-cadastro img {
+        position: absolute;
+        left: 2em;
+        top: 3.2em;
+        transform: translateY(-50%);
+        width: 1.8em;
+        height: auto;
+        opacity: 0.4;
+        transition: all 0.25s ease;
+    }
+
+    .input-email-cadastro ::placeholder,
+    .input-senha-cadastro ::placeholder,
+    .input-nome-cadastro ::placeholder {
+    font-family: 'Alfa Slab One', sans-serif;
+    color:rgb(174, 171, 171) ;
     }
 
     .container-cadastro input:focus {
-        box-shadow: 0 0 20px 2px rgba($color: #E9A15B, $alpha: 1.0);
+        box-shadow: 0 0 2px 2px rgba($color: red, $alpha: 1.0);
         border: none;
         outline: none;
     }
 
-    button {
-        border-radius: 5em;
-        background-color: #E9A15B;
+    .but-cadastro {
+        background-color: #ef4444;
+        color: #ffffff;
+        width: 100%;
+        max-width: 38em;
+        padding: 1.4em;
         border: none;
-        width: 10em;
-        height: 2em;
-        transition: 0.5s;
-        color: white;
+        border-radius: 30px;
+        font-size: 1.5em;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+        margin-top: 1.5em;
+        font-style: none;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
     }
 
-    button:hover {
+    .but-cadastro:hover {
         background-color: red;
     }
 
+    .lado_direito {
+        display: flex;
+        width: 70%;
+        background-image: url(https://img.magnific.com/vetores-gratis/jogo-das-nuvens-brancas_78370-1667.jpg?semt=ais_hybrid&w=740&q=80);
 
+    }
 }

@@ -8,7 +8,7 @@ export default function Cabecalho() {
     <div className='Cabe'>
     <Logo className="test" />
       <div className='Cbotoes'>
-        <a className='inicio'>Inicio</a>
+        <Link to="/home" className='inicio'>Inicio</Link>
         <Link to="/" className="login">Login</Link>
         <Link to="/cadastro" className='cadastro'>Cadastro</Link>
         < Link to="/Usuario" className='perfi'>Perfil</Link>

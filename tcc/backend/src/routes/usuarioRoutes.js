@@ -1,4 +1,3 @@
-
 import { Router } from "express";
 import * as controller from "../controller/usuarioController.js";
 import { upload } from "../utils/upload.js";

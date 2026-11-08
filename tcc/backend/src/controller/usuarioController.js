@@ -1,16 +1,25 @@
 
 import * as service from "../services/usuarioService.js";
 
+
 export async function cadastrar(req, resp) {
     try {
         const usuario = req.body;
+
+        console.log("DADOS RECEBIDOS:", usuario);
+
         const id = await service.cadastrarUsuario(usuario);
+
+        console.log("ID CADASTRADO:", id);
 
         resp.status(201).send({ id });
     } catch (err) {
+        console.log("ERRO NO CADASTRO:", err);
+
         resp.status(400).send({ erro: err.message });
     }
 }
+
 
 export async function login(req, resp) {
     try {
