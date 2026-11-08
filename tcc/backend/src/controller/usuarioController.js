@@ -82,7 +82,8 @@ export async function atualizar(req, resp) {
         }
 
         resp.status(200).send({
-            mensagem: "Perfil atualizado com sucesso"
+            mensagem: "Perfil atualizado com sucesso",
+            foto: usuario.foto
         });
     } catch (err) {
         resp.status(400).send({ erro: err.message });

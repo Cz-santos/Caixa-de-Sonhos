@@ -1,11 +1,12 @@
 import Cabe from '../../components/cabeçalho/index.jsx'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
 import api from "../../service/api.js";
 import './App.scss';
 
 function App() {
   const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
+  const [brinq, setbrinq] = useState([])
   const [doaçao, setdoaçao] = useState(false)
   const [nomeBrinquedo, setNomeBrinquedo] = useState("");
   const [descricao, setDescricao] = useState("");
@@ -35,6 +36,23 @@ function App() {
     }
 
   }
+
+  useEffect(() => {
+
+    async function carregarbrinq() {
+      try {
+        const resposta = await api.get("/brinquedos");
+
+        setbrinq(resposta.data);
+
+      } catch (error) {
+        console.log("Erro ao buscar brinquedos:", error);
+      }
+    }
+
+    carregarbrinq();
+
+  }, []);
 
   return (
     <div className="Principal">
@@ -102,7 +120,21 @@ function App() {
       </section>
 
       <section className='final'>
-        <h1 className='fi-titulo'> Brinquedos:</h1>
+        <div className="lista-brinquedos">
+          {brinq.map((item) => (
+            <div className="brinquedo" key={item.id}>
+              <img src={`http://localhost:5002${item.foto_url}`} alt={item.nome} className='imagem-brinquedos' />
+              <div className='bri-texto'>
+                <h2 className='nome-brinquedo'>{item.nome}</h2>
+                <p className='desc-brinq'>{item.descricao}</p>
+                <button className="botao-produto">
+                  Quero esse!
+                </button>
+              </div>
+            </div>
+          ))}
+
+        </div>
       </section>
 
       {doaçao && (

@@ -11,21 +11,6 @@ export default function Perfil() {
     const [Nome, setNome] = useState(usuario?.nome || "Usuario");
     const [janela, setjanela] = useState(false);
 
-    const Imagem = (a) => {
-        const arq = a.target.files[0];
-
-        if (arq) {
-            setsavefoto(arq);
-
-            const leitor = new FileReader();
-
-            leitor.onload = (b) => {
-                setFoto(b.target.result);
-            };
-
-            leitor.readAsDataURL(arq);
-        }
-    };
 
     const Tx = (c) => {
         setNome(c.target.value);
@@ -34,34 +19,38 @@ export default function Perfil() {
     async function psave() {
         try {
             const dados = new FormData();
+
             if (savefoto) {
                 dados.append("foto", savefoto);
             }
 
             dados.append("nome", Nome);
 
-            await api.put(`/usuarios/${usuario.id}`, dados)
+            const resposta = await api.put(`/usuarios/${usuario.id}`, dados);
+
             const ua = {
                 ...usuario,
                 nome: Nome,
-                email:Email
+                email: Email,
+                foto: resposta.data.foto || usuario.foto
             };
 
-            localStorage.setItem("usuario", JSON.stringify(ua))
+            localStorage.setItem("usuario", JSON.stringify(ua));
 
-            setjanela(false)
-            alert("Perfil atualizado!!!")
-        }
+            setFoto(ua.foto);
+            setsavefoto(null);
 
-        catch (error) {
+            setjanela(false);
+            alert("Perfil atualizado!!!");
+
+        } catch (error) {
             console.log("Erro ao atualizar perfil", error);
-            alert("desculpe nao foi possivel atualizar o perfil")
+            alert("Desculpe, não foi possível atualizar o perfil");
         }
-
     }
     return (
         <div className="tudo-perfil">
-            <Cabe/>
+            <Cabe />
             <br>
             </br>
             <div className="começo-perfil">
@@ -71,14 +60,14 @@ export default function Perfil() {
 
                 <div className="lado-texto">
                     <div className="nome-email">
-                    <h1>Ola, <span className="cor2">{Nome.toUpperCase()}</span></h1>
-                    <p className="nome-email-p">{Email}</p>
+                        <h1>Ola, <span className="cor2">{Nome.toUpperCase()}</span></h1>
+                        <p className="nome-email-p">{Email}</p>
                     </div>
                     <button className="editar-perfil" onClick={() => setjanela(true)}> ✏️</button>
                 </div>
 
                 <div className="caixa-coraçao-t">
-                    <img src="/assets/image/image 24.png" alt="image"  className="caixa-coraçao"/>
+                    <img src="/assets/image/image 24.png" alt="image" className="caixa-coraçao" />
                 </div>
             </div>
 
@@ -89,10 +78,20 @@ export default function Perfil() {
                         <h2>Editar Perfil</h2>
 
                         <label>Mudar foto de perfil:</label>
-                        <input className="input-imagem" type='file' accept='image/*' onChange={Imagem} />
+                        <input className="input-imagem" type='file' accept='image/*' onChange={(e) => setsavefoto(e.target.files[0])} />
+                        {savefoto ? (
+                            <img
+                                src={URL.createObjectURL(savefoto)}
+                                alt="Foto do perfil"
+                            />
+                        ) : Foto ? (
+                            <img src={`http://localhost:5002${Foto}`} alt="Foto do perfil" />
+                        ) : (
+                            <img src="/assets/image/usuario.png" />
+                        )}
 
                         <label>Mudar nome de usuário:</label>
-                        <input  type="text" value={Nome} className="input-text" onChange={Tx} />
+                        <input type="text" value={Nome} className="input-text" onChange={Tx} />
 
                         <div className="modal-botoes">
                             <button className="btn-salvar" onClick={psave}>
@@ -103,7 +102,7 @@ export default function Perfil() {
                 </div>
             )}
 
-            
+
         </div>
     );
 }
