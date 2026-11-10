@@ -2,16 +2,25 @@ import './index.scss'
 
 export default function Rodapé() {
     return (
-        <div className='tudo-rodapé'>
-            <img src='../../assets/image/image 75.png' />
-            <h1 className='roda-titulo'> Doe Brinquedos <br /> Espalhe felicidades!!!!!</h1>
-            <a className='inicio'>Inicio</a>
-            <a className='login'>Login</a>
-            <a className='cadastro'>Cadastro</a>
-            <a className='perfi'>Perfil</a>
-            <img src='../../assets/image/image 76.png'/>
+        <>
+            <div className='container-rodape'>
+                <div className='container-ursodoe'>
+                    <img src="/assets/image/image 75.png" alt="Ursinho" />
+                    <h2>doe brinquedo <br />espalhe a alegria</h2>
+                </div>
 
-        </div>
+                <div className='container-opcoes'>
+
+                    <p>inicio</p>
+                    <p>sobre</p>
+                    <p>como doar</p>
+                    <p>impacto</p>
+
+                </div>
+
+                <img src="/assets/image/image 76.png" alt="Coraçao" />
+            </div>
+        </>
 
     )
 

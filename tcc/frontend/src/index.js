@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { BrowserRouter, Routes, Route,} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import App from './pages/app/App.jsx';
 import Login from './pages/login/index.jsx';
-import Erro  from './pages/erro/index.jsx';
+import Erro from './pages/erro/index.jsx';
 import Cadastro from './pages/Cadastro/index.jsx';
 import Perfil from './pages/Perfil/index.jsx';
 import Segurança from './protege.js'
@@ -15,15 +15,15 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Login/>}></Route>
-      <Route element={<Segurança/>}>
-      <Route path='/home' element={<App/>}></Route>
-      <Route path='*' element={<Erro/>}></Route>
-      <Route path='/cadastro' element={<Cadastro/>}></Route>
-      <Route path='/Usuario' element={<Perfil/>}></Route>
-      </Route>
-    </Routes>
+      <Routes>
+        <Route path='/' element={<Login />}></Route>
+        <Route path='/cadastro' element={<Cadastro />}></Route>
+        <Route element={<Segurança />}>
+          <Route path='/home' element={<App />}></Route>
+          <Route path='*' element={<Erro />}></Route>
+          <Route path='/Usuario' element={<Perfil />}></Route>
+        </Route>
+      </Routes>
     </BrowserRouter>
 
   </React.StrictMode>

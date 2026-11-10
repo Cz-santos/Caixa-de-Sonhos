@@ -1,6 +1,7 @@
 import Cabe from '../../components/cabeçalho/index.jsx'
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
+import Rodapé from "../../components/rodapé/index.jsx"
 import api from "../../service/api.js";
 import './App.scss';
 
@@ -136,6 +137,7 @@ function App() {
 
         </div>
       </section>
+        <Rodapé/>
 
       {doaçao && (
         <div className="fundo-borrado" onClick={() => setdoaçao(false)}>
