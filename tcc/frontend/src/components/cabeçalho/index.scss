@@ -26,52 +26,30 @@ body {
         font-size: 2em;
         color: rgba(1, 149, 255, 1);
     }
-
+    .perfi{
+        color: white;
+        text-decoration: none;
+    }
     .login,
     .inicio,
-    .cadastro,
-    .perfi {
+    .cadastro
+     {
         color: rgba(1, 149, 255, 1);
         text-decoration: none;
     }
 
-    .inicio {
-        transition: 1s;
 
-    }
-
-    .inicio:hover {
-        transform: translatey(-20px);
+    .inicio:hover, .login:hover, .cadastro:hover {
+        transform: translatey(-2.4px);
         color: red;
     }
 
-    .login {
-        transition: 1s;
+    .login,.cadastro,.perfi,.inicio   {
+        transition: 0.2s;
     }
 
-    .login:hover {
-        transform: translatey(-20px);
-        color: red;
-    }
 
-    .cadastro {
-        transition: 1s;
-    }
-
-    .cadastro:hover {
-        transform: translateY(-20px);
-        color: red;
-    }
-
-    .perfi {
-        transition: 1s;
-    }
-
-    .perfi:hover {
-        transform: translateY(-20px);
-        color: red;
-    }
-
+ 
 
     .CDoaçao {
         display: flex;
@@ -84,7 +62,7 @@ body {
         height: 2em;
         width: 8em;
         gap: 0.5em;
-
+        text-decoration: none;
     }
 
     .CDoaçao:hover {
@@ -94,3 +72,149 @@ body {
     }
 
 }
+
+
+.caixa-doaçao {
+    width: 50em;
+    min-height: 38em;
+    background-color: #d6d6d6;
+    border-radius: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    gap: 1.5em;
+    box-shadow: 2em 5em 2em 2em 5em rgba(0, 0, 0, 0.2);
+}
+
+.selecionar-foto {
+    width: 100%;
+    height: 18em;
+    background-color: #f5f5f5;
+    border-radius: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.selecionar-foto img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.selecionar-foto input {
+    display: none;
+}
+
+.caixa-doaçao input[type="text"] {
+    width: 95%;
+    height: 40px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+    font-size: 14px;
+}
+input::placeholder{
+    color: #3b74b3;
+    font-family: "Cherry Bomb One", sans-serif;
+}
+
+.caixa-doaçao textarea {
+    width: 95%;
+    height: 80px;
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+    font-size: 14px;
+    resize: none;
+}
+.caixa-doaçao textarea::placeholder {
+    color: #3b74b3;
+    font-family: "Cherry Bomb One", sans-serif;
+}
+
+.caixa-doaçao button {
+    width: 180px;
+    height: 40px;
+    background-color: #e52525;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.caixa-doaçao button:hover {
+    background-color: #bd1717;
+}
+
+.final {
+    padding: 4em 6%;
+}
+
+
+.lista-brinquedos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5em;
+    width: 100%;
+}
+
+
+.brinquedo {
+    background-color: #f8f8f8;
+    background-color: #fafafa;
+    border-radius: 2.5em;
+    padding: 1.6em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    box-sizing: border-box;
+    box-shadow: 0.03em 1em #00000010;
+}
+
+.brinquedo img {
+    width: 100%;
+    height: 22em;
+    background-color: #fff0e5;
+    border-radius: 2.5em;
+    object-fit: contain;
+}
+
+.nome-brinquedo {
+    color: #1675ff;
+    margin: 0;
+}
+
+.desc-brinq {
+    color: #16469b;
+    margin: 0.5em 0;
+    line-height: 1.3;
+}
+
+.botao-produto {
+    background-color: #e60000;
+    color: white;
+    border: none;
+    border-radius: 3em;
+    padding: 1.2em 2.5em;
+    width: 75%;
+    align-self: center;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-produto:hover {
+    background-color: #c90000;
+    transform: scale(1.03);}

@@ -6,19 +6,22 @@ import api from "../../service/api.js";
 import "./App.scss";
 
 function App() {
-  const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
-  const [Nome, setNome] = useState(usuario?.nome);
-  const [Email, setEmail] = useState(usuario?.email);
-  const [brinq, setbrinq] = useState([]);
-  const [doaçao, setdoaçao] = useState(false);
-  const [nomeBrinquedo, setNomeBrinquedo] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [foto, setFoto] = useState(null);
-  const [queromais, setqueromais] = useState(false);
-  const [testenome, settestenome] = useState("")
-  const [testeemail, settesteemail] = useState("")
-  const [resp, setresp] = useState("")
-  const [briqselecionado, setbrinqselecionado] = useState(null)
+    const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
+    const [Nome, setNome] = useState(usuario?.nome);
+    const [Email, setEmail] = useState(usuario?.email);
+    const [Senha,setSenha] = useState(usuario?.senha)
+    const [brinq, setbrinq] = useState([]);
+    const [doaçao, setdoaçao] = useState(false);
+    const [nomeBrinquedo, setNomeBrinquedo] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [foto, setFoto] = useState(null);
+    const [queromais, setqueromais] = useState(false);
+    const [testesenha, settestesenha] = useState("")
+    const [testeemail, settesteemail] = useState("")
+    const [resp, setresp] = useState("")
+    const [briqselecionado, setbrinqselecionado] = useState(null)
+
+
 
   async function envio() {
     try {
@@ -66,18 +69,19 @@ function App() {
   }, []);
 
   async function testen() {
-    let valor = ""
+   function testen() {
+  let valor = "";
 
-    if (testenome == Nome && testeemail == Email) {
-      valor = "Nome e Email certos"
-    }
-    else {
-      valor = "Nome ou Email tao errados"
-    }
+  if (testesenha === Senha && testeemail.trim() === Email) {
+    valor = "Senha e Email certos";
+  } else {
+    valor = "Senha ou Email estão errados";
+  }
 
-    setresp(valor)
-    settesteemail("")
-    settestenome("")
+  setresp(valor);
+  settesteemail("");
+  settestesenha("");
+}
 
 
   }
@@ -271,24 +275,29 @@ function App() {
 
       {queromais && (
         <div className="fundo-q" onClick={() => setqueromais(false)}>
-          <div className="caixa-seila" onClick={(e) => e.stopPropagation()}>
+         <div className="caixa-seila" onClick={(e) => e.stopPropagation()}>
+            
             <div className="info-brinquedo">
               <img
                 src={`http://localhost:5002${briqselecionado.foto_url}`}  />
               <h2>{briqselecionado.nome}</h2>
               <p>{briqselecionado.descricao}</p>
             </div>
+
             <div className="texro-quero">
+              
               <div className="input-nome">
-                <h2>{testenome}</h2>
-                <input type="text" placeholder="Qual é o nome do usuario:" className="in-senha" value={testenome} onChange={(e) => settestenome(e.target.value)} />
+                <h2>{testeemail}</h2>
+                <input type="email" placeholder="Qual é o Email da conta:" className="in-email" value={testeemail} onChange={(e) => settesteemail(e.target.value)} />
+              
               </div>
+              
               <div className="input-email">
-                <h2 className="nome-brinquedo">{testeemail}</h2>
-                <input type="email" placeholder="Qual é o email da conta: " className="in-email" value={testeemail} onChange={(e) => settesteemail(e.target.value)} />
+                <input type="password" placeholder="Qual é a Senha da conta: " className="in-senha" value={testesenha} onChange={(e) => settestesenha(e.target.value)} />
               </div>
               <p>{resp}</p>
             </div>
+
             <div className="quero-op">
           <select>
             <option>Escolha</option>

@@ -3,6 +3,7 @@ import './index.scss';
 import api from "../../service/api.js";
 import Cabe from "../../components/cabeçalho/index.jsx"
 
+
 export default function Perfil() {
     const [savefoto, setsavefoto] = useState(null)
     const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
@@ -69,7 +70,85 @@ export default function Perfil() {
                 <div className="caixa-coraçao-t">
                     <img src="/assets/image/image 24.png" alt="image" className="caixa-coraçao" />
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
+
+
+            <div className="container-manga676767">
+
+                <div className="container-gabriel">
+                    <h2>doacoes quero mais</h2>
+                    <div className="container-queromais">
+                    </div>
+                </div>
+
+                <div className="container-joao">
+                    <h2>minhas doacoes</h2>
+                    <div className="container-minhadoacoes">
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div className="container-principal-maisdoacoes">
+                <div className="container-junçao-imgtxt">
+                    <img src="../../assets/image/image 76.png" alt="" />
+                    <div className="container-texto-perfilF">
+                        <h1>Quer fazer mais doaçoes</h1>
+                        <h2>cada brinquedo conta</h2>
+                    </div>
+                </div>
+
+
+                <button className="Co_Butão">doe Agora</button>
+
+            </div>
+
+            <div className=""></div>
 
             {janela && (
                 <div className="fundo-borrado" onClick={() => setjanela(false)}>

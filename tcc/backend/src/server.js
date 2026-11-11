@@ -19,8 +19,8 @@ app.use("/uploads", express.static("uploads"));
 
 app.use(usuarioRoutes);
 app.use(brinquedoRoutes);
-// app.use(doacaoRoutes);
-// app.use(favoritoRoutes);
+app.use(doacaoRoutes);
+app.use(favoritoRoutes);
 
 const PORT = process.env.PORT || 5002;
 
