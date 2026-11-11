@@ -1,5 +1,5 @@
 import Cabe from "../../components/cabeçalho/index.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { data, Link } from "react-router-dom";
 import Rodapé from "../../components/rodapé/index.jsx";
 import api from "../../service/api.js";
@@ -15,6 +15,10 @@ function App() {
   const [descricao, setDescricao] = useState("");
   const [foto, setFoto] = useState(null);
   const [queromais, setqueromais] = useState(false);
+  const [testenome, settestenome] = useState("")
+  const [testeemail, settesteemail] = useState("")
+  const [resp, setresp] = useState("")
+  const [briqselecionado, setbrinqselecionado] = useState(null)
 
   async function envio() {
     try {
@@ -43,7 +47,7 @@ function App() {
         const dado = new FormData();
         dado.append("nome", Nome);
         dado.append("email", Email);
-      } catch {}
+      } catch { }
     }
   }
 
@@ -60,6 +64,33 @@ function App() {
 
     carregarbrinq();
   }, []);
+
+  async function testen() {
+    let valor = ""
+
+    if (testenome == Nome && testeemail == Email) {
+      valor = "Nome e Email certos"
+    }
+    else {
+      valor = "Nome ou Email tao errados"
+    }
+
+    setresp(valor)
+    settesteemail("")
+    settestenome("")
+
+
+  }
+  async function buscarBrinquedo(id) {
+    try {
+      const resposta = await api.get(`/brinquedos/${id}`);
+
+      setbrinqselecionado(resposta.data);
+
+    } catch (error) {
+      console.log("Erro ao buscar brinquedo:", error);
+    }
+  }
 
   return (
     <div className="Principal">
@@ -187,7 +218,10 @@ function App() {
                 <p className="desc-brinq">{item.descricao}</p>
                 <button
                   className="botao-produto"
-                  onClick={() => setqueromais(true)}
+                  onClick={async () => {
+                    await buscarBrinquedo(item.id);
+                    setqueromais(true);
+                  }}
                 >
                   Quero esse!
                 </button>
@@ -236,18 +270,33 @@ function App() {
       )}
 
       {queromais && (
-        <div className="fundo-borrado" onClick={() => setqueromais(false)}>
-          <div className="caixa-seila" onChange={(e)=>e.stopPropagation()}>
-            <div className="texro-quero">
-              <h1> Nome: {Nome.toUpperCase()}</h1>
-              <h2> Email: {Email}</h2>
+        <div className="fundo-q" onClick={() => setqueromais(false)}>
+          <div className="caixa-seila" onClick={(e) => e.stopPropagation()}>
+            <div className="info-brinquedo">
+              <img
+                src={`http://localhost:5002${briqselecionado.foto_url}`}  />
+              <h2>{briqselecionado.nome}</h2>
+              <p>{briqselecionado.descricao}</p>
             </div>
-        <div className="quero-op">
+            <div className="texro-quero">
+              <div className="input-nome">
+                <h2>{testenome}</h2>
+                <input type="text" placeholder="Qual é o nome do usuario:" className="in-senha" value={testenome} onChange={(e) => settestenome(e.target.value)} />
+              </div>
+              <div className="input-email">
+                <h2 className="nome-brinquedo">{testeemail}</h2>
+                <input type="email" placeholder="Qual é o email da conta: " className="in-email" value={testeemail} onChange={(e) => settesteemail(e.target.value)} />
+              </div>
+              <p>{resp}</p>
+            </div>
+            <div className="quero-op">
           <select>
-          <option> Selecione a retirada</option>
-          <option> Frei(Instituto Social Nossa Senhora de Fatima)</option>
+            <option>Escolha</option>
+            <option> Frei</option>
+            <option> Grajau ong</option>
           </select>
-           </div>
+            </div>
+             <button onClick={testen}> Esse mesmo??</button>
 
           </div>
         </div>
