@@ -10,4 +10,6 @@ endpoints.get("/favoritos/:id_usuario", controller.listar);
 
 endpoints.delete("/favoritos/:id", controller.excluir);
 
+endpoints.put("/favoritos/:id/status", controller.atualizarStatus);
+
 export default endpoints;

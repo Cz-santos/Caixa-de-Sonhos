@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './index.scss';
 import api from "../../service/api.js";
-import Cabe from "../../components/cabeçalho/index.jsx"
-
+import Cabe from "../../components/cabeçalho/index.jsx";
 
 export default function Perfil() {
-    const [savefoto, setsavefoto] = useState(null)
+    const [savefoto, setsavefoto] = useState(null);
     const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
     const [Foto, setFoto] = useState(usuario?.foto || "");
     const [Email, setEmail] = useState(usuario?.email);
     const [Nome, setNome] = useState(usuario?.nome || "Usuario");
     const [janela, setjanela] = useState(false);
 
+    const [brinquedosEscolhidos, setBrinquedosEscolhidos] = useState([]);
 
     const Tx = (c) => {
         setNome(c.target.value);
@@ -49,11 +49,47 @@ export default function Perfil() {
             alert("Desculpe, não foi possível atualizar o perfil");
         }
     }
+
+    async function carregarFavoritos() {
+        try {
+            const resposta = await api.get(`/favoritos/${usuario.id}`);
+            setBrinquedosEscolhidos(resposta.data);
+        } catch (error) {
+            console.log("Erro ao buscar brinquedos escolhidos:", error);
+        }
+    }
+
+    useEffect(() => {
+        if (usuario?.id) {
+            carregarFavoritos();
+        }
+    }, []);
+
+    async function atualizarStatus(id, status) {
+        try {
+            await api.put(`/favoritos/${id}/status`, {
+                status: status
+            });
+
+            setBrinquedosEscolhidos((lista) =>
+                lista.map((item) =>
+                    item.id === id
+                        ? { ...item, status_favorito: status }
+                        : item
+                )
+            );
+
+        } catch (error) {
+            console.log("Erro ao atualizar status:", error);
+            alert("Não foi possível atualizar o status.");
+        }
+    }
+
     return (
         <div className="tudo-perfil">
             <Cabe />
-            <br>
-            </br>
+            <br></br>
+
             <div className="começo-perfil">
                 <div className="lado-foto">
                     <img src={Foto || "/assets/image/usuario.png"} alt="perfil" />
@@ -70,82 +106,66 @@ export default function Perfil() {
                 <div className="caixa-coraçao-t">
                     <img src="/assets/image/image 24.png" alt="image" className="caixa-coraçao" />
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
-
 
             <div className="container-manga676767">
 
                 <div className="container-gabriel">
-                    <h2>doacoes quero mais</h2>
+                    <h2>doacoes quero <span className="cor2">mais</span></h2>
+
                     <div className="container-queromais">
+                        {brinquedosEscolhidos.map((item) => (
+                            <div className="card-brinquedo-escolhido" key={item.id}>
+
+                                <img
+                                    src={`http://localhost:5002${item.foto_url}`}
+                                    alt={item.nome}
+                                />
+
+                                <h3>{item.nome}</h3>
+
+                                <p>{item.descricao}</p>
+
+                                <div className="botoes-status">
+
+                                    <button
+                                        onClick={() => atualizarStatus(item.id, "recebido")}
+                                    >
+                                        Recebido
+                                    </button>
+
+                                    <button
+                                        onClick={() => atualizarStatus(item.id, "nao_recebido")}
+                                    >
+                                        Não recebido
+                                    </button>
+
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
                 <div className="container-joao">
-                    <h2>minhas doacoes</h2>
+                    <h2>minhas <span className="cor1"> doacoes</span></h2>
+
                     <div className="container-minhadoacoes">
                     </div>
                 </div>
 
             </div>
 
-
-
             <div className="container-principal-maisdoacoes">
                 <div className="container-junçao-imgtxt">
                     <img src="../../assets/image/image 76.png" alt="" />
+
                     <div className="container-texto-perfilF">
                         <h1>Quer fazer mais doaçoes</h1>
                         <h2>cada brinquedo conta</h2>
                     </div>
                 </div>
 
-
                 <button className="Co_Butão">doe Agora</button>
-
             </div>
 
             <div className=""></div>
@@ -157,7 +177,14 @@ export default function Perfil() {
                         <h2>Editar Perfil</h2>
 
                         <label>Mudar foto de perfil:</label>
-                        <input className="input-imagem" type='file' accept='image/*' onChange={(e) => setsavefoto(e.target.files[0])} />
+
+                        <input
+                            className="input-imagem"
+                            type='file'
+                            accept='image/*'
+                            onChange={(e) => setsavefoto(e.target.files[0])}
+                        />
+
                         {savefoto ? (
                             <img
                                 src={URL.createObjectURL(savefoto)}
@@ -170,7 +197,13 @@ export default function Perfil() {
                         )}
 
                         <label>Mudar nome de usuário:</label>
-                        <input type="text" value={Nome} className="input-text" onChange={Tx} />
+
+                        <input
+                            type="text"
+                            value={Nome}
+                            className="input-text"
+                            onChange={Tx}
+                        />
 
                         <div className="modal-botoes">
                             <button className="btn-salvar" onClick={psave}>
@@ -180,7 +213,6 @@ export default function Perfil() {
                     </div>
                 </div>
             )}
-
 
         </div>
     );

@@ -2,6 +2,21 @@
 import { con } from "../utils/connection.js";
 
 export async function saveFavorito(favorito) {
+    const verificar = `
+        SELECT id
+        FROM favorito
+        WHERE id_usuario = ? AND id_brinquedo = ?
+    `;
+
+    const [existente] = await con.query(verificar, [
+        favorito.id_usuario,
+        favorito.id_brinquedo
+    ]);
+
+    if (existente.length > 0) {
+        throw new Error("Esse brinquedo já está nos favoritos");
+    }
+
     const command = `
         INSERT INTO favorito (id_usuario, id_brinquedo)
         VALUES (?, ?)
@@ -52,5 +67,17 @@ export async function deleteFavorito(id) {
     `;
 
     const [result] = await con.query(command, [id]);
+    return result.affectedRows;
+}
+
+export async function updateStatusFavorito(id, status) {
+    const command = `
+        UPDATE favorito
+        SET status = ?
+        WHERE id = ?
+    `;
+
+    const [result] = await con.query(command, [status, id]);
+
     return result.affectedRows;
 }
