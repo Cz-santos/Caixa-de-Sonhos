@@ -231,181 +231,171 @@
 
 
 .container-manga676767 {
-    width: 100%;
-    min-height: 40em;
-    padding: 2em 4%;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 2em;
-    box-sizing: border-box;
+  width: 100%;
+  min-height: 40em;
+  padding: 2em 4%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 2em;
+  box-sizing: border-box;
 }
 
 .container-gabriel,
 .container-joao {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5em;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
 }
 
 .container-gabriel h2,
 .container-joao h2 {
-    color: #3f5ead;
-    font-size: 2em;
-    margin: 0;
-    font-family: 'Cherry Bomb One', sans-serif;
-    font-size: 5em;
+  color: #3f5ead;
+  font-size: 2em;
+  margin: 0;
+  font-family: 'Cherry Bomb One', sans-serif;
+  font-size: 5em;
 }
 
 .container-queromais,
 .container-minhadoacoes {
-    width: 100%;
-    height: 32em;
-    padding: 1.5em;
-    background-color: #B7E7FF;
-    border-radius: 1.5em;
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
+  width: 100%;
+  height: 32em;
+  padding: 1.5em;
+  background-color: #B7E7FF;
+  border-radius: 1.5em;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+
 }
 
 .container-queromais {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-content: start;
-    gap: 1.5em;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 1.5em;
 }
 
 .card-brinquedo-escolhido {
-    width: 100%;
-    min-width: 0;
-    min-height: 30em;
-    padding: 1.5em;
-    background-color: white;
-    border: 0.1em solid #e4f1fa;
-    border-radius: 1.3em;
-    box-shadow: 0 0.4em 1.2em rgba(44, 105, 145, 0.12);
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    box-sizing: border-box;
-    transition: 0.3s;
+  width: 100%;
+  min-width: 0;
+  min-height: 30em;
+  padding: 1.5em;
+  background-color: white;
+  border: 0.1em solid #e4f1fa;
+  border-radius: 1.3em;
+  box-shadow: 0 0.4em 1.2em rgba(44, 105, 145, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  box-sizing: border-box;
+  transition: 0.3s;
 }
 
 .card-brinquedo-escolhido:hover {
-    transform: translateY(-0.3em);
-    box-shadow: 0 0.7em 1.5em rgba(44, 105, 145, 0.18);
+  transform: translateY(-0.3em);
+  box-shadow: 0 0.7em 1.5em rgba(44, 105, 145, 0.18);
 }
 
 .card-brinquedo-escolhido img {
-    width: 100%;
-    height: 13em;
-    object-fit: contain;
-    background-color: #f5faff;
-    border-radius: 1em;
+  width: 100%;
+  height: 13em;
+  object-fit: contain;
+  background-color: #f5faff;
+  border-radius: 1em;
 }
 
 .card-brinquedo-escolhido h3 {
-    margin: 0;
-    color: #263b70;
-    font-size: 1.7em;
-    overflow-wrap: break-word;
+  margin: 0;
+  color: #263b70;
+  font-size: 1.7em;
+  overflow-wrap: break-word;
 }
 
 .card-brinquedo-escolhido p {
-    margin: 0;
-    color: #64748b;
-    font-size: 1.2em;
-    line-height: 1.6;
-    overflow-wrap: break-word;
+  margin: 0;
+  color: #64748b;
+  font-size: 1.2em;
+  line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
 .botoes-status {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8em;
-    margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  margin-top: auto;
 }
 
 .botoes-status button {
-    width: 100%;
-    padding: 0.9em;
-    border: none;
-    border-radius: 0.8em;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
+  width: 100%;
+  padding: 0.9em;
+  border: none;
+  border-radius: 0.8em;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .botoes-status button:first-child {
-    background-color: #35b77b;
-    color: white;
+  background-color: #35b77b;
+  color: white;
 }
 
 .botoes-status button:last-child {
-    background-color: #ed7777;
-    color: white;
+  background-color: #ed7777;
+  color: white;
 }
 
 .botoes-status button:hover {
-    filter: brightness(0.93);
-    transform: scale(1.02);
+  filter: brightness(0.93);
+  transform: scale(1.02);
 }
 
 .container-principal-maisdoacoes {
-    width: 90%;
-    min-height: 20em;
-    margin: 3em auto;
-    padding: 2em 4em;
-    background: linear-gradient(120deg, #cbe9ff, #a9dcff);
-    border-radius: 2em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
+  width: 90%;
+  min-height: 20em;
+  margin: 3em auto;
+  padding: 2em 4em;
+  background: linear-gradient(120deg, #cbe9ff, #a9dcff);
+  border-radius: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .container-junçao-imgtxt {
-    display: flex;
-    align-items: center;
-    gap: 2em;
+  display: flex;
+  align-items: center;
+  gap: 2em;
 }
 
 .container-junçao-imgtxt img {
-    width: 13em;
-    height: 13em;
-    object-fit: contain;
+  width: 13em;
+  height: 13em;
+  object-fit: contain;
 }
 
 .container-texto-perfilF h1 {
-    color: #263b70;
-    font-size: 2em;
-    margin: 0;
+  color: #263b70;
+  font-size: 2em;
+  margin: 0;
 }
 
 .container-texto-perfilF h2 {
-    color: #5476a8;
-    font-size: 1.4em;
+  color: #5476a8;
+  font-size: 1.4em;
 }
 
-.Co_Butão {
-    padding: 1em 2em;
-    border: none;
-    border-radius: 1em;
-    background-color: #3f70b5;
-    color: white;
-    font-size: 1.3em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
+
 
 .Co_Butão:hover {
-    background-color: #315b96;
-    transform: scale(1.04);
+  background-color: #315b96;
+  transform: scale(1.04);
 }
-

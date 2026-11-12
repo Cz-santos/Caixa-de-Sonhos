@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"
 import './index.scss';
 import api from "../../service/api.js";
 import Cabe from "../../components/cabeçalho/index.jsx";
@@ -6,11 +7,13 @@ import Cabe from "../../components/cabeçalho/index.jsx";
 export default function Perfil() {
     const [savefoto, setsavefoto] = useState(null);
     const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
+    const brinquedo = JSON.parse(localStorage.getItem("brinquedo") || "null")
     const [Foto, setFoto] = useState(usuario?.foto || "");
     const [Email, setEmail] = useState(usuario?.email);
     const [Nome, setNome] = useState(usuario?.nome || "Usuario");
     const [janela, setjanela] = useState(false);
-
+    const [deletbrinq, setdeletbrinq] = useState([])
+    const [ Brinquedos, setBrinquedos] = useState([])
     const [brinquedosEscolhidos, setBrinquedosEscolhidos] = useState([]);
 
     const Tx = (c) => {
@@ -85,6 +88,7 @@ export default function Perfil() {
         }
     }
 
+
     return (
         <div className="tudo-perfil">
             <Cabe />
@@ -150,6 +154,19 @@ export default function Perfil() {
                     <h2>minhas <span className="cor1"> doacoes</span></h2>
 
                     <div className="container-minhadoacoes">
+                        {Brinquedos.map((item) => (
+                            <div className="card-meus-brinquedos" key={item.id}>
+                                <img
+                                    src={`http://localhost:5002${item.foto_url}`}
+                                    alt={item.nome}
+                                />
+
+                                <h3>{item.nome}</h3>
+
+                                <p>{item.descricao}</p>
+                            </div>
+                        ))}
+                        <div className=""></div>
                     </div>
                 </div>
 
@@ -165,7 +182,7 @@ export default function Perfil() {
                     </div>
                 </div>
 
-                <button className="Co_Butão">doe Agora</button>
+                <Link to="/home" className="Co_Butão">doe Agora</Link>
             </div>
 
             <div className=""></div>

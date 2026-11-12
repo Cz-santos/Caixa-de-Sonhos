@@ -7,7 +7,6 @@ import "./App.scss";
 
 function App() {
   const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
-
   const [Nome, setNome] = useState(usuario?.nome);
   const [brinq, setbrinq] = useState([]);
   const [doaçao, setdoaçao] = useState(false);
@@ -19,6 +18,7 @@ function App() {
   const [testeemail, settesteemail] = useState("");
   const [resp, setresp] = useState("");
   const [briqselecionado, setbrinqselecionado] = useState(null);
+  const[testebrinq, settestebrinq] = useState([])
 
   async function envio() {
     try {
@@ -84,6 +84,7 @@ async function testen() {
         const respostaBrinquedos = await api.get("/brinquedos/disponiveis");
         setbrinq(respostaBrinquedos.data);
 
+    
     } catch (error) {
         console.log("Erro ao escolher brinquedo:", error);
 
@@ -104,6 +105,15 @@ async function testen() {
     }
   }
 
+      async function delet(id) {
+          try {
+              const resposta = await api.delete(`/brinquedos/${id}`);
+              console.log("Brinquedo deletado com sucesso!");
+          } catch (erro) {
+              console.error("Erro ao deletar:", erro);
+          }
+      }
+
   return (
     <div className="Principal">
       <Cabe />
@@ -123,8 +133,8 @@ async function testen() {
             Doe brinquedos e ajude a levar alegria, afeto e esperança para muitas
             crianças.
           </p>
-
-          <a className="Co_Butão" onClick={() => setdoaçao(true)}>
+  
+          <a className="Co_Butão" onClick={ async() => await   setdoaçao(true)}>
             <img
               className="coracao"
               src="../../../assets/icons/image 61.png"
@@ -132,6 +142,7 @@ async function testen() {
             />
             Doe Agora
           </a>
+
         </div>
       </section>
 
