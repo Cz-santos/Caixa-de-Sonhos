@@ -79,31 +79,31 @@ export default function Perfil() {
         }
     }, []);
 
-async function atualizarStatus(id, status) {
-    try {
-        await api.put(`/favoritos/${id}/status`, {
-            status: status
-        });
+    async function atualizarStatus(id, status) {
+        try {
+            await api.put(`/favoritos/${id}/status`, {
+                status: status
+            });
 
-        if (status === "recebido") {
-            setBrinquedosEscolhidos((lista) =>
-                lista.filter((item) => item.id !== id)
-            );
-        } else {
-            setBrinquedosEscolhidos((lista) =>
-                lista.map((item) =>
-                    item.id === id
-                        ? { ...item, status_favorito: status }
-                        : item
-                )
-            );
+            if (status === "recebido") {
+                setBrinquedosEscolhidos((lista) =>
+                    lista.filter((item) => item.id !== id)
+                );
+            } else {
+                setBrinquedosEscolhidos((lista) =>
+                    lista.map((item) =>
+                        item.id === id
+                            ? { ...item, status_favorito: status }
+                            : item
+                    )
+                );
+            }
+
+        } catch (error) {
+            console.log("Erro ao atualizar status:", error);
+            alert("Não foi possível atualizar o status.");
         }
-
-    } catch (error) {
-        console.log("Erro ao atualizar status:", error);
-        alert("Não foi possível atualizar o status.");
     }
-}
 
     async function delet(id) {
         try {
@@ -128,7 +128,10 @@ async function atualizarStatus(id, status) {
 
             <div className="começo-perfil">
                 <div className="lado-foto">
-                    <img src={Foto || "/assets/image/usuario.png"} alt="perfil" />
+                    <img
+                        src={Foto ? `${api.defaults.baseURL}${Foto}` : "/assets/image/usuario.png"}
+                        alt="perfil"
+                    />
                 </div>
 
                 <div className="lado-texto">
@@ -154,7 +157,7 @@ async function atualizarStatus(id, status) {
                             <div className="card-brinquedo-escolhido" key={item.id}>
 
                                 <img
-                                    src={`http://localhost:5002${item.foto_url}`}
+                                    src={`${api.defaults.baseURL}${item.foto_url}`}
                                     alt={item.nome}
                                 />
 
@@ -163,7 +166,6 @@ async function atualizarStatus(id, status) {
                                 <p>{item.descricao}</p>
 
                                 <div className="botoes-status">
-
                                     <button
                                         onClick={() => atualizarStatus(item.id, "recebido")}
                                     >
@@ -182,7 +184,7 @@ async function atualizarStatus(id, status) {
                         {Brinquedos.map((item) => (
                             <div className="card-meus-brinquedos" key={item.id_doacao}>
                                 <img
-                                    src={`http://localhost:5002${item.foto_url}`}
+                                    src={`${api.defaults.baseURL}${item.foto_url}`}
                                     alt={item.nome}
                                 />
 
@@ -236,9 +238,12 @@ async function atualizarStatus(id, status) {
                                 alt="Foto do perfil"
                             />
                         ) : Foto ? (
-                            <img src={`http://localhost:5002${Foto}`} alt="Foto do perfil" />
+                            <img
+                                src={`${api.defaults.baseURL}${Foto}`}
+                                alt="Foto do perfil"
+                            />
                         ) : (
-                            <img src="/assets/image/usuario.png" />
+                            <img src="/assets/image/usuario.png" alt="Foto padrão" />
                         )}
 
                         <label>Mudar nome de usuário:</label>
