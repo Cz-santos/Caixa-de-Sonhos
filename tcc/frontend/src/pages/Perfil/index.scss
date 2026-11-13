@@ -1,4 +1,5 @@
-@import url('https://googleapis.com');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Cherry+Bomb+One&display=swap');
 
 .tudo-perfil {
   width: 100vw;
@@ -15,7 +16,6 @@
   height: 20em;
   padding: 3em 4em;
   display: flex;
-
   align-items: center;
   justify-content: space-between;
   gap: 3em;
@@ -150,6 +150,7 @@
   letter-spacing: 0.01em;
 }
 
+.input-text,
 .input-texto {
   width: 100%;
   padding: 1.5em 2em;
@@ -163,6 +164,7 @@
   transition: all 0.25s ease;
 }
 
+.input-text:focus,
 .input-texto:focus {
   background-color: #ffffff;
   border-color: #3f5ead;
@@ -187,10 +189,6 @@
 
 .input-imagem:hover {
   background-color: #e2e8f0;
-}
-
-.input-imagem:hover {
-  background-color: #2e4785;
 }
 
 .input-imagem:active {
@@ -229,7 +227,6 @@
   transform: translateY(0);
 }
 
-
 .container-manga676767 {
   width: 100%;
   min-height: 40em;
@@ -243,7 +240,8 @@
 
 .container-gabriel,
 .container-joao {
-  width: 50%;
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -253,36 +251,36 @@
 .container-gabriel h2,
 .container-joao h2 {
   color: #3f5ead;
-  font-size: 2em;
+  font-size: 5em;
   margin: 0;
   font-family: 'Cherry Bomb One', sans-serif;
-  font-size: 5em;
 }
 
 .container-queromais,
 .container-minhadoacoes {
   width: 100%;
   height: 32em;
+  min-height: 32em;
+  max-height: 32em;
   padding: 1.5em;
   background-color: #B7E7FF;
   border-radius: 1.5em;
   box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
-
-}
-
-.container-queromais {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-content: start;
   gap: 1.5em;
 }
 
-.card-brinquedo-escolhido {
+.card-brinquedo-escolhido,
+.card-meus-brinquedos {
   width: 100%;
+  height: 30em;
   min-width: 0;
   min-height: 30em;
+  max-height: 30em;
   padding: 1.5em;
   background-color: white;
   border: 0.1em solid #e4f1fa;
@@ -292,30 +290,38 @@
   flex-direction: column;
   gap: 1em;
   box-sizing: border-box;
+  overflow: hidden;
   transition: 0.3s;
 }
 
-.card-brinquedo-escolhido:hover {
+.card-brinquedo-escolhido:hover,
+.card-meus-brinquedos:hover {
   transform: translateY(-0.3em);
   box-shadow: 0 0.7em 1.5em rgba(44, 105, 145, 0.18);
 }
 
-.card-brinquedo-escolhido img {
+.card-brinquedo-escolhido img,
+.card-meus-brinquedos img {
   width: 100%;
   height: 13em;
+  min-height: 13em;
+  max-height: 13em;
   object-fit: contain;
   background-color: #f5faff;
   border-radius: 1em;
+  flex-shrink: 0;
 }
 
-.card-brinquedo-escolhido h3 {
+.card-brinquedo-escolhido h3,
+.card-meus-brinquedos h3 {
   margin: 0;
   color: #263b70;
   font-size: 1.7em;
   overflow-wrap: break-word;
 }
 
-.card-brinquedo-escolhido p {
+.card-brinquedo-escolhido p,
+.card-meus-brinquedos p {
   margin: 0;
   color: #64748b;
   font-size: 1.2em;
@@ -342,19 +348,35 @@
   transition: 0.3s;
 }
 
-.botoes-status button:first-child {
+.botoes-status button {
   background-color: #35b77b;
   color: white;
 }
 
-.botoes-status button:last-child {
-  background-color: #ed7777;
-  color: white;
-}
+
 
 .botoes-status button:hover {
   filter: brightness(0.93);
   transform: scale(1.02);
+}
+
+.card-meus-brinquedos button {
+  width: 100%;
+  padding: 0.9em;
+  margin-top: auto;
+  border: none;
+  border-radius: 0.8em;
+  background-color: #ed7777;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card-meus-brinquedos button:hover {
+  filter: brightness(0.93);
 }
 
 .container-principal-maisdoacoes {
@@ -391,11 +413,4 @@
 .container-texto-perfilF h2 {
   color: #5476a8;
   font-size: 1.4em;
-}
-
-
-
-.Co_Butão:hover {
-  background-color: #315b96;
-  transform: scale(1.04);
 }

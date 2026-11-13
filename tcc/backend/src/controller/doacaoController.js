@@ -59,3 +59,15 @@ export async function excluir(req, res) {
         res.status(500).send({ erro: err.message });
     }
 }
+
+export async function listarPorDoador(req, res) {
+    try {
+        const id_doador = req.params.id_doador;
+
+        const doacoes = await service.listarDoacoesPorDoador(id_doador);
+
+        res.status(200).send(doacoes);
+    } catch (err) {
+        res.status(500).send({ erro: err.message });
+    }
+}

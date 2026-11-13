@@ -73,3 +73,7 @@ export async function atualizarDoacao(id, doacao) {
 export async function excluirDoacao(id) {
     return await repository.deleteDoacao(id);
 }
+
+export async function listarDoacoesPorDoador(id_doador) {
+    return await repository.listDoacoesPorDoador(id_doador);
+}

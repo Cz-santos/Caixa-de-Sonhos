@@ -39,9 +39,12 @@ export async function listBrinquedos() {
 
 export async function listBrinquedosDisponiveis() {
     const command = `
-        SELECT *
-        FROM brinquedo
-        WHERE status = 'disponivel'
+        SELECT
+            b.*
+        FROM brinquedo b
+        INNER JOIN doacao d
+            ON d.id_brinquedo = b.id
+        WHERE b.status = 'disponivel'
     `;
 
     const [result] = await con.query(command);

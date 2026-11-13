@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import './index.scss';
 import api from "../../service/api.js";
 import Cabe from "../../components/cabeçalho/index.jsx";
@@ -7,13 +8,13 @@ import Cabe from "../../components/cabeçalho/index.jsx";
 export default function Perfil() {
     const [savefoto, setsavefoto] = useState(null);
     const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
-    const brinquedo = JSON.parse(localStorage.getItem("brinquedo") || "null")
+    const brinquedo = JSON.parse(localStorage.getItem("brinquedo") || "null");
     const [Foto, setFoto] = useState(usuario?.foto || "");
     const [Email, setEmail] = useState(usuario?.email);
     const [Nome, setNome] = useState(usuario?.nome || "Usuario");
     const [janela, setjanela] = useState(false);
-    const [deletbrinq, setdeletbrinq] = useState([])
-    const [ Brinquedos, setBrinquedos] = useState([])
+    const [deletbrinq, setdeletbrinq] = useState([]);
+    const [Brinquedos, setBrinquedos] = useState([]);
     const [brinquedosEscolhidos, setBrinquedosEscolhidos] = useState([]);
 
     const Tx = (c) => {
@@ -62,18 +63,33 @@ export default function Perfil() {
         }
     }
 
+    async function minhasDoacoes() {
+        try {
+            const resposta = await api.get(`/doacoes/doador/${usuario.id}`);
+            setBrinquedos(resposta.data);
+        } catch (error) {
+            console.log("Erro ao buscar minhas doações:", error);
+        }
+    }
+
     useEffect(() => {
         if (usuario?.id) {
             carregarFavoritos();
+            minhasDoacoes();
         }
     }, []);
 
-    async function atualizarStatus(id, status) {
-        try {
-            await api.put(`/favoritos/${id}/status`, {
-                status: status
-            });
+async function atualizarStatus(id, status) {
+    try {
+        await api.put(`/favoritos/${id}/status`, {
+            status: status
+        });
 
+        if (status === "recebido") {
+            setBrinquedosEscolhidos((lista) =>
+                lista.filter((item) => item.id !== id)
+            );
+        } else {
             setBrinquedosEscolhidos((lista) =>
                 lista.map((item) =>
                     item.id === id
@@ -81,13 +97,29 @@ export default function Perfil() {
                         : item
                 )
             );
+        }
 
-        } catch (error) {
-            console.log("Erro ao atualizar status:", error);
-            alert("Não foi possível atualizar o status.");
+    } catch (error) {
+        console.log("Erro ao atualizar status:", error);
+        alert("Não foi possível atualizar o status.");
+    }
+}
+
+    async function delet(id) {
+        try {
+            await api.delete(`/doacoes/${id}`);
+
+            setBrinquedos((lista) =>
+                lista.filter((item) => item.id_doacao !== id)
+            );
+
+            console.log("Doação excluída com sucesso!");
+
+        } catch (erro) {
+            console.error("Erro ao deletar:", erro);
+            alert("Não foi possível excluir a doação.");
         }
     }
-
 
     return (
         <div className="tudo-perfil">
@@ -137,13 +169,6 @@ export default function Perfil() {
                                     >
                                         Recebido
                                     </button>
-
-                                    <button
-                                        onClick={() => atualizarStatus(item.id, "nao_recebido")}
-                                    >
-                                        Não recebido
-                                    </button>
-
                                 </div>
                             </div>
                         ))}
@@ -155,7 +180,7 @@ export default function Perfil() {
 
                     <div className="container-minhadoacoes">
                         {Brinquedos.map((item) => (
-                            <div className="card-meus-brinquedos" key={item.id}>
+                            <div className="card-meus-brinquedos" key={item.id_doacao}>
                                 <img
                                     src={`http://localhost:5002${item.foto_url}`}
                                     alt={item.nome}
@@ -164,9 +189,12 @@ export default function Perfil() {
                                 <h3>{item.nome}</h3>
 
                                 <p>{item.descricao}</p>
+
+                                <button onClick={() => delet(item.id_doacao)}>
+                                    Não quero mais doar
+                                </button>
                             </div>
                         ))}
-                        <div className=""></div>
                     </div>
                 </div>
 

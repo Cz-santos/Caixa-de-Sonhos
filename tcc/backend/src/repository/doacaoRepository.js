@@ -66,7 +66,6 @@ export async function updateDoacao(id, doacao) {
 
     return result.affectedRows;
 }
-
 export async function deleteDoacao(id) {
     const command = `
         DELETE FROM doacao
@@ -77,7 +76,6 @@ export async function deleteDoacao(id) {
 
     return result.affectedRows;
 }
-
 export async function getUltimaDoacaoBeneficiario(id_usuario) {
     const command = `
         SELECT data_retirada
@@ -91,4 +89,23 @@ export async function getUltimaDoacaoBeneficiario(id_usuario) {
     const [result] = await con.query(command, [id_usuario]);
 
     return result[0];
+}
+
+
+export async function listDoacoesPorDoador(id_doador) {
+    const command = `
+        SELECT
+            d.id AS id_doacao,
+            b.id AS id_brinquedo,
+            b.nome,
+            b.descricao,
+            b.foto_url
+        FROM doacao d
+        INNER JOIN brinquedo b ON d.id_brinquedo = b.id
+        WHERE d.id_doador = ?
+    `;
+
+    const [result] = await con.query(command, [id_doador]);
+
+    return result;
 }

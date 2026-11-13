@@ -18,7 +18,7 @@ function App() {
   const [testeemail, settesteemail] = useState("");
   const [resp, setresp] = useState("");
   const [briqselecionado, setbrinqselecionado] = useState(null);
-  const[testebrinq, settestebrinq] = useState([])
+  const [testebrinq, settestebrinq] = useState([]);
 
   async function envio() {
     try {
@@ -43,58 +43,62 @@ function App() {
     }
   }
 
-useEffect(() => {
+  useEffect(() => {
     async function carregarbrinq() {
-        try {
-            const resposta = await api.get("/brinquedos/disponiveis");
-            setbrinq(resposta.data);
-        } catch (error) {
-            console.log("Erro ao buscar brinquedos:", error);
-        }
+      try {
+        const resposta = await api.get("/brinquedos/disponiveis");
+        setbrinq(resposta.data);
+      } catch (error) {
+        console.log("Erro ao buscar brinquedos:", error);
+      }
     }
 
     carregarbrinq();
-}, []);
 
+    window.addEventListener("focus", carregarbrinq);
 
-async function testen() {
+    return () => {
+      window.removeEventListener("focus", carregarbrinq);
+    };
+  }, []);
+
+  async function testen() {
     try {
-        const resposta = await api.post("/login", {
-            email: testeemail,
-            senha: testesenha
-        });
+      const resposta = await api.post("/login", {
+        email: testeemail,
+        senha: testesenha
+      });
 
-        const usuarioValidado = resposta.data;
+      const usuarioValidado = resposta.data;
 
-        const dados = {
-            id_usuario: usuarioValidado.id,
-            id_brinquedo: briqselecionado.id
-        };
+      const dados = {
+        id_usuario: usuarioValidado.id,
+        id_brinquedo: briqselecionado.id
+      };
 
-        await api.post("/favoritos", dados);
+      await api.post("/favoritos", dados);
 
-        setresp("Brinquedo escolhido com sucesso!");
+      setresp("Brinquedo escolhido com sucesso!");
 
-        settesteemail("");
-        settestesenha("");
+      settesteemail("");
+      settestesenha("");
 
-        setbrinqselecionado(null);
-        setqueromais(false);
+      setbrinqselecionado(null);
+      setqueromais(false);
 
-        const respostaBrinquedos = await api.get("/brinquedos/disponiveis");
-        setbrinq(respostaBrinquedos.data);
+      const respostaBrinquedos = await api.get("/brinquedos/disponiveis");
+      setbrinq(respostaBrinquedos.data);
 
-    
     } catch (error) {
-        console.log("Erro ao escolher brinquedo:", error);
+      console.log("Erro ao escolher brinquedo:", error);
 
-        if (error.response) {
-            setresp(error.response.data.erro);
-        } else {
-            setresp("Não foi possível conectar ao servidor.");
-        }
+      if (error.response) {
+        setresp(error.response.data.erro);
+      } else {
+        setresp("Não foi possível conectar ao servidor.");
+      }
     }
-}
+  }
 
   async function buscarBrinquedo(id) {
     try {
@@ -104,15 +108,6 @@ async function testen() {
       console.log("Erro ao buscar brinquedo:", error);
     }
   }
-
-      async function delet(id) {
-          try {
-              const resposta = await api.delete(`/brinquedos/${id}`);
-              console.log("Brinquedo deletado com sucesso!");
-          } catch (erro) {
-              console.error("Erro ao deletar:", erro);
-          }
-      }
 
   return (
     <div className="Principal">
@@ -133,8 +128,8 @@ async function testen() {
             Doe brinquedos e ajude a levar alegria, afeto e esperança para muitas
             crianças.
           </p>
-  
-          <a className="Co_Butão" onClick={ async() => await   setdoaçao(true)}>
+
+          <a className="Co_Butão" onClick={async () => await setdoaçao(true)}>
             <img
               className="coracao"
               src="../../../assets/icons/image 61.png"
@@ -142,7 +137,6 @@ async function testen() {
             />
             Doe Agora
           </a>
-
         </div>
       </section>
 
@@ -241,7 +235,7 @@ async function testen() {
           {brinq.map(item => (
             <div className="brinquedo" key={item.id}>
               <img
-                src={`http://localhost:5002${item.foto_url}`}
+                src={`${api.defaults.baseURL}${item.foto_url}`}
                 alt={item.nome}
                 className="imagem-brinquedos"
               />
@@ -312,7 +306,7 @@ async function testen() {
           >
             <div className="info-brinquedo">
               <img
-                src={`http://localhost:5002${briqselecionado.foto_url}`}
+                src={`${api.defaults.baseURL}${briqselecionado.foto_url}`}
                 alt={briqselecionado.nome}
               />
 
