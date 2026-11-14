@@ -1,13 +1,14 @@
 
 import Cabe from "../../components/cabeçalho/index.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Rodapé from "../../components/rodapé/index.jsx";
 import api from "../../service/api.js";
 import "./App.scss";
 
 function App() {
   const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
-  const [Nome, setNome] = useState(usuario?.nome);
+
+  const [Nome, setNome] = useState(usuario?.nome || "");
   const [brinq, setbrinq] = useState([]);
   const [doaçao, setdoaçao] = useState(false);
   const [nomeBrinquedo, setNomeBrinquedo] = useState("");
@@ -18,31 +19,92 @@ function App() {
   const [testeemail, settesteemail] = useState("");
   const [resp, setresp] = useState("");
   const [briqselecionado, setbrinqselecionado] = useState(null);
-  const [testebrinq, settestebrinq] = useState([]);
 
+  const inputFoto = useRef(null);
+
+  // SELECIONAR FOTO
+  function selecionarFoto(e) {
+    const arquivo = e.target.files?.[0];
+
+    console.log("ARQUIVO SELECIONADO:", arquivo);
+
+    if (!arquivo) {
+      setFoto(null);
+      return;
+    }
+
+    if (!arquivo.type.startsWith("image/")) {
+      alert("Selecione somente arquivos de imagem.");
+      e.target.value = "";
+      setFoto(null);
+      return;
+    }
+
+    setFoto(arquivo);
+  }
+
+  // CADASTRAR BRINQUEDO
   async function envio() {
     try {
+      if (!usuario?.id) {
+        alert("Faça login para cadastrar uma doação.");
+        return;
+      }
+
+      if (!nomeBrinquedo.trim() || !descricao.trim()) {
+        alert("Preencha o nome e a descrição.");
+        return;
+      }
+
+      const arquivo = inputFoto.current?.files?.[0];
+
+      if (!arquivo) {
+        alert("Selecione uma foto para o brinquedo.");
+        return;
+      }
+
       const dados = new FormData();
 
       dados.append("nome", nomeBrinquedo);
       dados.append("descricao", descricao);
-      dados.append("foto", foto);
+      dados.append("foto", arquivo);
       dados.append("id_doador", usuario.id);
 
+      console.log("ARQUIVO ENVIADO:", arquivo.name);
+      console.log("TIPO:", arquivo.type);
+      console.log("FORM DATA:", [...dados.entries()]);
+
       const resposta = await api.post("/brinquedos", dados);
+
+      console.log("RESPOSTA DO CADASTRO:", resposta.data);
 
       alert("Doação cadastrada, muito obrigado pela sua ajuda!!!!");
 
       setNomeBrinquedo("");
       setDescricao("");
       setFoto(null);
+
+      if (inputFoto.current) {
+        inputFoto.current.value = "";
+      }
+
       setdoaçao(false);
+
+      const lista = await api.get("/brinquedos/disponiveis");
+      setbrinq(lista.data);
+
     } catch (error) {
       console.log("Erro ao cadastrar doação:", error);
-      alert("Não foi possível cadastrar a doação.");
+      console.log("Resposta do servidor:", error.response?.data);
+
+      alert(
+        error.response?.data?.erro ||
+        "Não foi possível cadastrar a doação."
+      );
     }
   }
 
+  // LISTAR BRINQUEDOS
   useEffect(() => {
     async function carregarbrinq() {
       try {
@@ -62,6 +124,7 @@ function App() {
     };
   }, []);
 
+  // ESCOLHER BRINQUEDO
   async function testen() {
     try {
       const resposta = await api.post("/login", {
@@ -82,7 +145,6 @@ function App() {
 
       settesteemail("");
       settestesenha("");
-
       setbrinqselecionado(null);
       setqueromais(false);
 
@@ -100,6 +162,7 @@ function App() {
     }
   }
 
+  // BUSCAR BRINQUEDO
   async function buscarBrinquedo(id) {
     try {
       const resposta = await api.get(`/brinquedos/${id}`);
@@ -107,6 +170,19 @@ function App() {
     } catch (error) {
       console.log("Erro ao buscar brinquedo:", error);
     }
+  }
+
+  // CAMINHO DA FOTO
+  function caminhoFoto(caminho) {
+    if (!caminho) {
+      return "/assets/image/image 81.png";
+    }
+
+    if (caminho.startsWith("http")) {
+      return caminho;
+    }
+
+    return `${api.defaults.baseURL}/${caminho.replace(/^\/+/, "")}`;
   }
 
   return (
@@ -129,11 +205,15 @@ function App() {
             crianças.
           </p>
 
-          <a className="Co_Butão" onClick={async () => await setdoaçao(true)}>
+          <a
+            className="Co_Butão"
+            onClick={() => setdoaçao(true)}
+          >
             <img
               className="coracao"
               src="../../../assets/icons/image 61.png"
               height={29}
+              alt=""
             />
             Doe Agora
           </a>
@@ -214,28 +294,31 @@ function App() {
             <img
               src="../../assets/image/images-removebg-preview 1.png"
               height={250}
+              alt=""
             />
           </div>
 
           <div className="sol1">
-            <img src="../../assets/image/image 18.png" height={350} />
+            <img src="../../assets/image/image 18.png" height={350} alt="" />
           </div>
 
           <div className="nuvem2">
             <img
               src="../../assets/image/images-removebg-preview 1.png"
               height={250}
+              alt=""
             />
           </div>
         </div>
       </section>
 
+      {/* BRINQUEDOS DISPONÍVEIS */}
       <section className="final">
         <div className="lista-brinquedos">
           {brinq.map(item => (
             <div className="brinquedo" key={item.id}>
               <img
-                src={`${api.defaults.baseURL}${item.foto_url}`}
+                src={caminhoFoto(item.foto_url)}
                 alt={item.nome}
                 className="imagem-brinquedos"
               />
@@ -261,20 +344,34 @@ function App() {
 
       <Rodapé />
 
+      {/* MODAL DE DOAÇÃO */}
       {doaçao && (
-        <div className="fundo-borrado" onClick={() => setdoaçao(false)}>
-          <div className="caixa-doaçao" onClick={e => e.stopPropagation()}>
+        <div
+          className="fundo-borrado"
+          onClick={() => setdoaçao(false)}
+        >
+          <div
+            className="caixa-doaçao"
+            onClick={e => e.stopPropagation()}
+          >
             <label className="selecionar-foto">
               {foto ? (
-                <img src={URL.createObjectURL(foto)} alt="Foto do brinquedo" />
+                <img
+                  src={URL.createObjectURL(foto)}
+                  alt="Foto do brinquedo"
+                />
               ) : (
-                <img src="/assets/image/image 81.png" />
+                <img
+                  src="/assets/image/image 81.png"
+                  alt="Selecionar foto"
+                />
               )}
 
               <input
+                ref={inputFoto}
                 type="file"
                 accept="image/*"
-                onChange={e => setFoto(e.target.files[0])}
+                onChange={selecionarFoto}
               />
             </label>
 
@@ -298,15 +395,19 @@ function App() {
         </div>
       )}
 
+      {/* MODAL DE ESCOLHA */}
       {queromais && briqselecionado && (
-        <div className="fundo-q" onClick={() => setqueromais(false)}>
+        <div
+          className="fundo-q"
+          onClick={() => setqueromais(false)}
+        >
           <div
             className="caixa-seila"
             onClick={e => e.stopPropagation()}
           >
             <div className="info-brinquedo">
               <img
-                src={`${api.defaults.baseURL}${briqselecionado.foto_url}`}
+                src={caminhoFoto(briqselecionado.foto_url)}
                 alt={briqselecionado.nome}
               />
 
@@ -346,7 +447,9 @@ function App() {
               </select>
             </div>
 
-            <button onClick={testen}>Esse mesmo??</button>
+            <button onClick={testen}>
+              Esse mesmo??
+            </button>
           </div>
         </div>
       )}

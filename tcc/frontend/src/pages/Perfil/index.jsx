@@ -1,25 +1,51 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import './index.scss';
+import "./index.scss";
 import api from "../../service/api.js";
 import Cabe from "../../components/cabeçalho/index.jsx";
 
 export default function Perfil() {
-    const [savefoto, setsavefoto] = useState(null);
     const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
-    const brinquedo = JSON.parse(localStorage.getItem("brinquedo") || "null");
+
+    const [savefoto, setsavefoto] = useState(null);
     const [Foto, setFoto] = useState(usuario?.foto || "");
-    const [Email, setEmail] = useState(usuario?.email);
+    const [Email, setEmail] = useState(usuario?.email || "");
     const [Nome, setNome] = useState(usuario?.nome || "Usuario");
+
     const [janela, setjanela] = useState(false);
-    const [deletbrinq, setdeletbrinq] = useState([]);
     const [Brinquedos, setBrinquedos] = useState([]);
     const [brinquedosEscolhidos, setBrinquedosEscolhidos] = useState([]);
 
-    const Tx = (c) => {
-        setNome(c.target.value);
-    };
+    function Tx(e) {
+        setNome(e.target.value);
+    }
+
+    function caminhoFotoUsuario(caminho) {
+        if (!caminho) {
+            return "/assets/image/usuario.png";
+        }
+
+        if (caminho.startsWith("http")) {
+            return caminho;
+        }
+
+        return `${api.defaults.baseURL}/${caminho.replace(/^\/+/, "")}`;
+    }
+
+
+    function caminhoFotoBrinquedo(caminho) {
+        if (!caminho) {
+            return "";
+        }
+
+        if (caminho.startsWith("http")) {
+            return caminho;
+        }
+
+        return `${api.defaults.baseURL}/${caminho.replace(/^\/+/, "")}`;
+    }
+
 
     async function psave() {
         try {
@@ -33,51 +59,59 @@ export default function Perfil() {
 
             const resposta = await api.put(`/usuarios/${usuario.id}`, dados);
 
-            const ua = {
+            const novaFoto = resposta.data.foto || Foto;
+
+            const usuarioAtualizado = {
                 ...usuario,
                 nome: Nome,
                 email: Email,
-                foto: resposta.data.foto || usuario.foto
+                foto: novaFoto
             };
 
-            localStorage.setItem("usuario", JSON.stringify(ua));
+            localStorage.setItem("usuario", JSON.stringify(usuarioAtualizado));
 
-            setFoto(ua.foto);
+            setFoto(novaFoto);
             setsavefoto(null);
-
             setjanela(false);
-            alert("Perfil atualizado!!!");
+
+            alert("Perfil atualizado!");
 
         } catch (error) {
-            console.log("Erro ao atualizar perfil", error);
-            alert("Desculpe, não foi possível atualizar o perfil");
+            console.log("Erro ao atualizar perfil:", error);
+            alert("Não foi possível atualizar o perfil.");
         }
     }
+
 
     async function carregarFavoritos() {
         try {
             const resposta = await api.get(`/favoritos/${usuario.id}`);
             setBrinquedosEscolhidos(resposta.data);
+
         } catch (error) {
             console.log("Erro ao buscar brinquedos escolhidos:", error);
         }
     }
 
+
     async function minhasDoacoes() {
         try {
             const resposta = await api.get(`/doacoes/doador/${usuario.id}`);
+
+            console.log("DOAÇÕES:", resposta.data);
+
             setBrinquedos(resposta.data);
         } catch (error) {
             console.log("Erro ao buscar minhas doações:", error);
         }
     }
-
     useEffect(() => {
         if (usuario?.id) {
             carregarFavoritos();
             minhasDoacoes();
         }
     }, []);
+
 
     async function atualizarStatus(id, status) {
         try {
@@ -105,6 +139,7 @@ export default function Perfil() {
         }
     }
 
+
     async function delet(id) {
         try {
             await api.delete(`/doacoes/${id}`);
@@ -124,42 +159,70 @@ export default function Perfil() {
     return (
         <div className="tudo-perfil">
             <Cabe />
-            <br></br>
+
+            <br />
+
 
             <div className="começo-perfil">
+
                 <div className="lado-foto">
                     <img
-                        src={Foto ? `${api.defaults.baseURL}${Foto}` : "/assets/image/usuario.png"}
+                        src={caminhoFotoUsuario(Foto)}
                         alt="perfil"
                     />
                 </div>
 
                 <div className="lado-texto">
                     <div className="nome-email">
-                        <h1>Ola, <span className="cor2">{Nome.toUpperCase()}</span></h1>
+                        <h1>
+                            Ola, <span className="cor2">{Nome.toUpperCase()}</span>
+                        </h1>
+
                         <p className="nome-email-p">{Email}</p>
                     </div>
-                    <button className="editar-perfil" onClick={() => setjanela(true)}> ✏️</button>
+
+                    <button
+                        className="editar-perfil"
+                        onClick={() => setjanela(true)}
+                    >
+                        ✏️
+                    </button>
                 </div>
 
                 <div className="caixa-coraçao-t">
-                    <img src="/assets/image/image 24.png" alt="image" className="caixa-coraçao" />
+                    <img
+                        src="/assets/image/image 24.png"
+                        alt="image"
+                        className="caixa-coraçao"
+                    />
                 </div>
+
             </div>
+
 
             <div className="container-manga676767">
 
+      
                 <div className="container-gabriel">
-                    <h2>doacoes quero <span className="cor2">mais</span></h2>
+
+                    <h2>
+                        doações quero <span className="cor2">mais</span>
+                    </h2>
 
                     <div className="container-queromais">
-                        {brinquedosEscolhidos.map((item) => (
-                            <div className="card-brinquedo-escolhido" key={item.id}>
 
-                                <img
-                                    src={`${api.defaults.baseURL}${item.foto_url}`}
-                                    alt={item.nome}
-                                />
+                        {brinquedosEscolhidos.map((item) => (
+                            <div
+                                className="card-brinquedo-escolhido"
+                                key={item.id}
+                            >
+
+                                {item.foto_url && (
+                                    <img
+                                        src={caminhoFotoBrinquedo(item.foto_url)}
+                                        alt={item.nome}
+                                    />
+                                )}
 
                                 <h3>{item.nome}</h3>
 
@@ -167,69 +230,107 @@ export default function Perfil() {
 
                                 <div className="botoes-status">
                                     <button
-                                        onClick={() => atualizarStatus(item.id, "recebido")}
+                                        onClick={() =>
+                                            atualizarStatus(item.id, "recebido")
+                                        }
                                     >
                                         Recebido
                                     </button>
                                 </div>
+
                             </div>
                         ))}
+
                     </div>
                 </div>
 
+
                 <div className="container-joao">
-                    <h2>minhas <span className="cor1"> doacoes</span></h2>
+
+                    <h2>
+                        minhas <span className="cor1">doações</span>
+                    </h2>
 
                     <div className="container-minhadoacoes">
+
                         {Brinquedos.map((item) => (
-                            <div className="card-meus-brinquedos" key={item.id_doacao}>
-                                <img
-                                    src={`${api.defaults.baseURL}${item.foto_url}`}
-                                    alt={item.nome}
-                                />
+                            <div
+                                className="card-meus-brinquedos"
+                                key={item.id_doacao}
+                            >
+
+                                {item.foto_url && (
+                                    <img
+                                        src={caminhoFotoBrinquedo(item.foto_url)}
+                                        alt={item.nome}
+                                    />
+                                )}
 
                                 <h3>{item.nome}</h3>
 
                                 <p>{item.descricao}</p>
 
-                                <button onClick={() => delet(item.id_doacao)}>
+                                <button
+                                    onClick={() => delet(item.id_doacao)}
+                                >
                                     Não quero mais doar
                                 </button>
+
                             </div>
                         ))}
+
                     </div>
                 </div>
 
             </div>
 
+
             <div className="container-principal-maisdoacoes">
+
                 <div className="container-junçao-imgtxt">
-                    <img src="../../assets/image/image 76.png" alt="" />
+
+                    <img
+                        src="/assets/image/image 76.png"
+                        alt=""
+                    />
 
                     <div className="container-texto-perfilF">
                         <h1>Quer fazer mais doaçoes</h1>
                         <h2>cada brinquedo conta</h2>
                     </div>
+
                 </div>
 
-                <Link to="/home" className="Co_Butão">doe Agora</Link>
+                <Link to="/home" className="Co_Butão">
+                    doe Agora
+                </Link>
+
             </div>
 
-            <div className=""></div>
 
             {janela && (
-                <div className="fundo-borrado" onClick={() => setjanela(false)}>
 
-                    <div className="caixa-edicao" onClick={(e) => e.stopPropagation()}>
+                <div
+                    className="fundo-borrado"
+                    onClick={() => setjanela(false)}
+                >
+
+                    <div
+                        className="caixa-edicao"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+
                         <h2>Editar Perfil</h2>
 
                         <label>Mudar foto de perfil:</label>
 
                         <input
                             className="input-imagem"
-                            type='file'
-                            accept='image/*'
-                            onChange={(e) => setsavefoto(e.target.files[0])}
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) =>
+                                setsavefoto(e.target.files[0])
+                            }
                         />
 
                         {savefoto ? (
@@ -237,13 +338,11 @@ export default function Perfil() {
                                 src={URL.createObjectURL(savefoto)}
                                 alt="Foto do perfil"
                             />
-                        ) : Foto ? (
+                        ) : (
                             <img
-                                src={`${api.defaults.baseURL}${Foto}`}
+                                src={caminhoFotoUsuario(Foto)}
                                 alt="Foto do perfil"
                             />
-                        ) : (
-                            <img src="/assets/image/usuario.png" alt="Foto padrão" />
                         )}
 
                         <label>Mudar nome de usuário:</label>
@@ -256,10 +355,16 @@ export default function Perfil() {
                         />
 
                         <div className="modal-botoes">
-                            <button className="btn-salvar" onClick={psave}>
+
+                            <button
+                                className="btn-salvar"
+                                onClick={psave}
+                            >
                                 Salvar
                             </button>
+
                         </div>
+
                     </div>
                 </div>
             )}
