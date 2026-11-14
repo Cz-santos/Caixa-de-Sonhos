@@ -206,7 +206,7 @@ export default function Perfil() {
                 <div className="container-gabriel">
 
                     <h2>
-                        doações quero <span className="cor2">mais</span>
+                        doações <span className="cor2">entregues</span>
                     </h2>
 
                     <div className="container-queromais">

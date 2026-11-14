@@ -221,7 +221,7 @@ function App() {
       </section>
 
       <section className="meio">
-        <h1 className="meio-titulo">Como Funciona:</h1>
+        <h1 className="meio-titulo">Como Funciona?</h1>
 
         <div className="co-meio">
           <div className="meio-img1">
@@ -240,8 +240,8 @@ function App() {
             </div>
 
             <p className="desc">
-              Escolha brinquedos em <br />
-              bons estados e limpos
+              Escolha um brinquedo em <br />
+              bom estado e limpo
             </p>
           </div>
 
