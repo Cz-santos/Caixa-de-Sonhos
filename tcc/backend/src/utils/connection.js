@@ -4,7 +4,7 @@ const con = await mysql.createConnection({
     host: 'localhost',
     user: 'root',
     database: "caixadesonhos",
-    password: "Pj26092009*"
+    password: "root"
 });
 
 console.log("mysql 100% conectado");

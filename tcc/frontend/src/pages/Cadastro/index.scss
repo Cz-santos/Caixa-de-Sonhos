@@ -133,4 +133,9 @@ body {
         background-image: url(https://img.magnific.com/vetores-gratis/jogo-das-nuvens-brancas_78370-1667.jpg?semt=ais_hybrid&w=740&q=80);
 
     }
+
+    .mensagem-erro, .mensagem-sucesso{
+        display: flex;
+        font-size: 2em;
+    }
 }
